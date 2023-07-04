@@ -1,19 +1,21 @@
 <ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <div class="sidebar-brand-icon">
-            <i class="fa-solid fa-layer-group"></i>
-        </div>
-        <div class="sidebar-brand-text mx-3">Todoist</div>
-    </a>
+    <li>
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('inbox') }}">
+            <div class="sidebar-brand-icon">
+                <i class="fa-solid fa-layer-group"></i>
+            </div>
+            <div class="sidebar-brand-text mx-3">Todoist</div>
+        </a>
+    </li>
 
     <!-- Divider -->
-    <hr class="sidebar-divider my-0">
+    <li><hr class="sidebar-divider my-0"></li>
 
     <!-- Nav Item - Inbox -->
     <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="{{ route('inbox') }}">
             <i class="fa-solid fa-inbox"></i>
             <span>Inbox</span></a>
     </li>
@@ -99,11 +101,11 @@
 
 
     <!-- Divider -->
-    <hr class="sidebar-divider d-none d-md-block">
+    <li><hr class="sidebar-divider d-none d-md-block"></li>
 
     <!-- Sidebar Toggler (Sidebar) -->
-    <div class="text-center d-none d-md-inline">
+    <li class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
-    </div>
+    </li>
 
 </ul>
