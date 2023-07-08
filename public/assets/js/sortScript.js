@@ -5,6 +5,7 @@ let nestedSortables = [].slice.call(document.querySelectorAll('.nested-sortable'
 for (let i = 0; i < nestedSortables.length; i++) {
     new Sortable(nestedSortables[i], {
         group: 'nested',
+        handle: '.fa-arrows-up-down-left-right',
         animation: 150,
         fallbackOnBody: true,
         swapThreshold: 0.65

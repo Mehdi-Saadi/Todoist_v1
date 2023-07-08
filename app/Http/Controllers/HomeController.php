@@ -27,10 +27,4 @@ class HomeController extends Controller
         $tasks = auth()->user()->tasks->where('is_archive', 0)->where('parent_id', 0)->where('is_done', 0)->sortBy('order');
         return view('inbox', compact('tasks'));
     }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
 }

@@ -27,10 +27,10 @@
 
                     <a class="dropdown-item" href="#" id="layoutDropdown" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="mr-md-2 d-lg-inline text-gray-700 small">
-                                        <i class="fa-regular fa-chart-bar mr-2"></i>
-                                        Layout
-                                    </span>
+                        <span class="mr-md-2 d-lg-inline text-gray-700 small">
+                            <i class="fa-regular fa-chart-bar mr-2"></i>
+                            Layout
+                        </span>
                     </a>
                     <!-- Dropdown - select type of view -->
                     <div class="dropdown-menu dropstart shadow animated--grow-in"
@@ -52,10 +52,10 @@
 
                     <a class="dropdown-item" href="#" id="sortrDropdown" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <span class="mr-md-2 d-lg-inline text-gray-700 small">
-                                            <i class="fa-regular fa-object-ungroup mr-2"></i>
-                                            Grouping
-                                        </span>
+                        <span class="mr-md-2 d-lg-inline text-gray-700 small">
+                            <i class="fa-regular fa-object-ungroup mr-2"></i>
+                            Grouping
+                        </span>
                     </a>
                     <!-- Dropdown - select type of view -->
                     <div class="dropdown-menu dropdown-menu-left shadow animated--grow-in"
@@ -156,7 +156,7 @@
 
     <!-- show all tasks -->
     <div class="mt-4">
-        <div id="nestedRoot" class="list-group col nested-sortable pr-0 py-5" ondrop="sendRequest(serialize(root))">
+        <div id="nestedRoot" class="list-group col nested-sortable pr-0" ondrop="sendRequest(serialize(root))">
 
             @include('layouts.tasks', ['tasks' => $tasks])
 

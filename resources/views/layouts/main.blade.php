@@ -24,60 +24,10 @@
 
     <!-- Custom styles for this template-->
     <link href="/assets/css/sb-admin-2.min.css" rel="stylesheet">
+    <!-- custom styles -->
+    <link href="/assets/css/style.css" rel="stylesheet">
     <!-- sortablejs library -->
     <script src="/assets/js/sortablejs/Sortable.min.js"></script>
-
-    <style>
-        /* add task button styles */
-        button.w-100 > span > i {
-            color: #d9534f;
-        }
-        button.w-100:hover {
-            color: #d9534f;
-        }
-        button.w-100:hover > span > i {
-            background: #d9534f;
-            color: #fff;
-        }
-        /* end add task button styles */
-
-        /* new task form styles */
-        /* The Modal (background) */
-        .modal {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 1; /* Sit on top */
-            left: 0;
-            top: 0;
-            max-width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgb(0,0,0); /* Fallback color */
-            background-color: rgba(0,0,0,0.1); /* Black w/ opacity */
-            padding-top: 60px;
-        }
-        /* Modal Content/Box */
-        .modal-content {
-            background-color: #fefefe;
-            margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-            border: 1px solid #adadad;
-            max-width: 400px; /* Could be more or less, depending on screen size */
-        }
-        /* Add Zoom Animation */
-        .animate {
-            -webkit-animation: animatezoom 0.6s;
-            animation: animatezoom 0.6s
-        }
-        @-webkit-keyframes animatezoom {
-            from {-webkit-transform: scale(0)}
-            to {-webkit-transform: scale(1)}
-        }
-        @keyframes animatezoom {
-            from {transform: scale(0)}
-            to {transform: scale(1)}
-        }
-        /* end new task form styles */
-    </style>
 </head>
 
 <body id="page-top">
@@ -155,9 +105,9 @@
     <!-- Custom scripts for all pages-->
     <script src="/assets/js/sb-admin-2.min.js"></script>
 
-    <!-- new task form scripts -->
+    <!-- task form scripts -->
     <script src="/assets/js/taskForm.js"></script>
-    <!-- end new task form scripts -->
+    <script src="/assets/js/doneCircleEffect.js"></script>
 
     <!-- sweetalert -->
     @include('sweetalert::alert')
@@ -166,6 +116,5 @@
     <!-- jsDelivr :: Sortable :: Latest (https://www.jsdelivr.com/package/npm/sortablejs) -->
 {{--    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>--}}
     <script src="/assets/js/sortScript.js"></script>
-    <!-- end sortable scripts -->
 </body>
 </html>

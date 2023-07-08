@@ -23,7 +23,7 @@ return new class extends Migration
             $table->boolean('is_done')->default(0);
             $table->boolean('is_archive')->default(0);
             $table->string('color')->nullable();
-            $table->integer('order')->default(0);
+            $table->unsignedBigInteger('order')->default(0);
             $table->dateTime('deadline')->nullable();
             $table->timestamps();
         });

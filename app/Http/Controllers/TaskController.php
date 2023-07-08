@@ -17,7 +17,13 @@ class TaskController extends Controller
             'description' => ['max:255'],
         ]);
 
-        auth()->user()->tasks()->create($data);
+        $user = auth()->user();
+
+        // add the submited task at end of list for first time
+        $data['order'] = $user->tasks()->where('is_archive', 0)->where('parent_id', 0)->max('order');
+        ++$data['order'];
+
+        $user->tasks()->create($data);
 
         toast('Task created', 'success');
         return back();
@@ -50,7 +56,7 @@ class TaskController extends Controller
     /**
      * sets the order of given tasks
      * @param $user
-     * @param $tasks
+     * @param $submittedTasks
      * @param int $parent_id
      * @return void
      */
