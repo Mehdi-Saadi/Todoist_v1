@@ -4,9 +4,11 @@
 <head>
 
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="Mehdi Saadi">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Inbox</title>
 
@@ -18,10 +20,12 @@
     <link href="/assets/fontawesome/css/solid.min.css" rel="stylesheet" type="text/css">
     <link href="/assets/fontawesome/css/regular.min.css" rel="stylesheet" type="text/css">
 
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+{{--    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">--}}
 
     <!-- Custom styles for this template-->
     <link href="/assets/css/sb-admin-2.min.css" rel="stylesheet">
+    <!-- sortablejs library -->
+    <script src="/assets/js/sortablejs/Sortable.min.js"></script>
 
     <style>
         /* add task button styles */
@@ -152,32 +156,16 @@
     <script src="/assets/js/sb-admin-2.min.js"></script>
 
     <!-- new task form scripts -->
-    <script>
-        // Get the modal
-        let modal = document.getElementById('taskForm');
-
-        // When the user clicks anywhere outside the modal, close it
-        window.onclick = function(event) {
-            if (event.target === modal) {
-                modal.style.display = "none";
-            }
-        }
-
-        // show the send comment form and set the value of parent id
-        function ShowFormAndSetValue(button) {
-            document.getElementById('taskForm').style.display='block';
-            // get hidden inputs
-            let parent_id = document.getElementById('parent_id');
-            let is_archive = document.getElementById('is_archive');
-            // set value
-            parent_id.value = $(button).data('id'); // set the parent id of given name
-            is_archive.value = $(button).data('archive'); // set is_archive 1 if user is adding archive
-        }
-    </script>
+    <script src="/assets/js/taskForm.js"></script>
     <!-- end new task form scripts -->
 
     <!-- sweetalert -->
     @include('sweetalert::alert')
 
+    <!-- sortable scripts -->
+    <!-- jsDelivr :: Sortable :: Latest (https://www.jsdelivr.com/package/npm/sortablejs) -->
+{{--    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>--}}
+    <script src="/assets/js/sortScript.js"></script>
+    <!-- end sortable scripts -->
 </body>
 </html>

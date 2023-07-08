@@ -14,135 +14,135 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </head>
-<body class="container" ondrop="console.log(serialize(root))">
-		<div class="row mt-4 d-flex justify-content-center">
+<body class="container">
+    <div class="row mt-4 d-flex justify-content-center">
 
-            <div style="max-width: 300px" >
-                <form class="d-none d-sm-inline-block my-2 my-md-0 mw-100" action="">
-                    <div class="input-group">
-                        <input type="text" name="search" class="form-control bg-light small" placeholder="New Task..." autocomplete="off">
-                        <button class="btn btn-primary" type="submit">
-                            <i class="fa-solid fa-plus"></i>
-                        </button>
-                    </div>
-                </form>
-            </div>
-
-		</div>
-
-        <div class="row mt-4">
-            <div id="nestedRoot" class="list-group col nested-sortable">
-                <div data-sortable-id="1.1" class="list-group-item nested-1">
-                    <i class="fa-regular fa-circle"></i>
-                    Item 1.1
-                    <div class="list-group nested-sortable">
-
-
-                        <div data-sortable-id="2.1" class="list-group-item nested-2">
-                            <i class="fa-regular fa-circle"></i>
-                            Item 2.1
-                            <div class="list-group nested-sortable">
-
-                            </div>
-                        </div>
-
-
-                        <div data-sortable-id="2.2" class="list-group-item nested-2">
-                            <i class="fa-regular fa-circle"></i>
-                            Item 2.2
-                            <div class="list-group nested-sortable">
-
-
-                                <div data-sortable-id="3.1" class="list-group-item nested-3">
-                                    <i class="fa-regular fa-circle"></i>
-                                    Item 3.1
-                                    <div class="list-group nested-sortable">
-
-                                    </div>
-                                </div>
-
-
-                                <div data-sortable-id="3.2" class="list-group-item nested-3">
-                                    <i class="fa-regular fa-circle"></i>
-                                    Item 3.2
-                                    <div class="list-group nested-sortable">
-
-                                    </div>
-                                </div>
-
-
-                                <div data-sortable-id="3.3" class="list-group-item nested-3">
-                                    <i class="fa-regular fa-circle"></i>
-                                    Item 3.3
-                                    <div class="list-group nested-sortable">
-
-                                    </div>
-                                </div>
-
-
-                                <div data-sortable-id="3.4" class="list-group-item nested-3">
-                                    <i class="fa-regular fa-circle"></i>
-                                    Item 3.4
-                                    <div class="list-group nested-sortable">
-
-                                    </div>
-                                </div>
-
-
-                            </div>
-                        </div>
-
-
-                        <div data-sortable-id="2.3" class="list-group-item nested-2">
-                            <i class="fa-regular fa-circle"></i>
-                            Item 2.3
-                            <div class="list-group nested-sortable">
-
-                            </div>
-                        </div>
-
-
-                        <div data-sortable-id="2.4" class="list-group-item nested-2">
-                            <i class="fa-regular fa-circle"></i>
-                            Item 2.4
-                            <div class="list-group nested-sortable">
-
-                            </div>
-                        </div>
-
-
-                    </div>
+        <div style="max-width: 300px" >
+            <form class="d-none d-sm-inline-block my-2 my-md-0 mw-100" action="">
+                <div class="input-group">
+                    <input type="text" name="search" class="form-control bg-light small" placeholder="New Task..." autocomplete="off">
+                    <button class="btn btn-primary" type="submit">
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
                 </div>
-
-
-                <div data-sortable-id="1.2" class="list-group-item nested-1">
-                    <i class="fa-regular fa-circle"></i>
-                    Item 1.2
-                    <div class="list-group nested-sortable">
-
-                    </div>
-                </div>
-
-
-                <div data-sortable-id="1.3" class="list-group-item nested-1">
-                    {{--                    <i class="fa-regular fa-circle-dot"></i>--}}
-                    <i class="fa-regular fa-circle"></i>
-                    Item 1.3
-                    <div class="list-group nested-sortable">
-
-                    </div>
-                </div>
-
-            </div>
+            </form>
         </div>
 
-        <!-- jsDelivr :: Sortable :: Latest (https://www.jsdelivr.com/package/npm/sortablejs) -->
-        <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+    </div>
+
+    <div class="row mt-4">
+        <div id="nestedRoot" class="list-group col nested-sortable pr-0 py-5" ondrop="console.log(serialize(root))">
+            <div data-sortable-id="1.1" class="list-group-item">
+                <i class="fa-regular fa-circle"></i>
+                Item 1.1
+                <div class="list-group nested-sortable">
+
+
+                    <div data-sortable-id="2.1" class="list-group-item">
+                        <i class="fa-regular fa-circle"></i>
+                        Item 2.1
+                        <div class="list-group nested-sortable">
+
+                        </div>
+                    </div>
+
+
+                    <div data-sortable-id="2.2" class="list-group-item">
+                        <i class="fa-regular fa-circle"></i>
+                        Item 2.2
+                        <div class="list-group nested-sortable">
+
+
+                            <div data-sortable-id="3.1" class="list-group-item">
+                                <i class="fa-regular fa-circle"></i>
+                                Item 3.1
+                                <div class="list-group nested-sortable">
+
+                                </div>
+                            </div>
+
+
+                            <div data-sortable-id="3.2" class="list-group-item">
+                                <i class="fa-regular fa-circle"></i>
+                                Item 3.2
+                                <div class="list-group nested-sortable">
+
+                                </div>
+                            </div>
+
+
+                            <div data-sortable-id="3.3" class="list-group-item">
+                                <i class="fa-regular fa-circle"></i>
+                                Item 3.3
+                                <div class="list-group nested-sortable">
+
+                                </div>
+                            </div>
+
+
+                            <div data-sortable-id="3.4" class="list-group-item">
+                                <i class="fa-regular fa-circle"></i>
+                                Item 3.4
+                                <div class="list-group nested-sortable">
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
+                    <div data-sortable-id="2.3" class="list-group-item">
+                        <i class="fa-regular fa-circle"></i>
+                        Item 2.3
+                        <div class="list-group nested-sortable">
+
+                        </div>
+                    </div>
+
+
+                    <div data-sortable-id="2.4" class="list-group-item">
+                        <i class="fa-regular fa-circle"></i>
+                        Item 2.4
+                        <div class="list-group nested-sortable">
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+            <div data-sortable-id="1.2" class="list-group-item">
+                <i class="fa-regular fa-circle"></i>
+                Item 1.2
+                <div class="list-group nested-sortable">
+
+                </div>
+            </div>
+
+
+            <div data-sortable-id="1.3" class="list-group-item">
+                {{--                    <i class="fa-regular fa-circle-dot"></i>--}}
+                <i class="fa-regular fa-circle"></i>
+                Item 1.3
+                <div class="list-group nested-sortable">
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- jsDelivr :: Sortable :: Latest (https://www.jsdelivr.com/package/npm/sortablejs) -->
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
     <script>
         // Nested demo
         let nestedSortables = [].slice.call(document.querySelectorAll('.nested-sortable'));
 
-        console.log(nestedSortables);
+        // console.log(nestedSortables);
 
         // Loop through each nested sortable element
         for (let i = 0; i < nestedSortables.length; i++) {

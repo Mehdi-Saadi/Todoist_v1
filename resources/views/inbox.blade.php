@@ -81,10 +81,10 @@
 
                     <a class="dropdown-item" href="#" id="userDropdown" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <span class="mr-md-2 d-lg-inline text-gray-700 small">
-                                            <i class="fa-solid fa-arrow-down-short-wide mr-2"></i>
-                                            Sorting
-                                        </span>
+                        <span class="mr-md-2 d-lg-inline text-gray-700 small">
+                            <i class="fa-solid fa-arrow-down-short-wide mr-2"></i>
+                            Sorting
+                        </span>
                     </a>
                     <!-- Dropdown - select type of view -->
                     <div class="dropdown-menu dropdown-menu-left shadow animated--grow-in"
@@ -156,9 +156,9 @@
 
     <!-- show all tasks -->
     <div class="mt-4">
-        <div id="nestedRoot" class="list-group col nested-sortable">
+        <div id="nestedRoot" class="list-group col nested-sortable pr-0 py-5" ondrop="sendRequest(serialize(root))">
 
-            @include('layouts.tasks', ['tasks', $tasks])
+            @include('layouts.tasks', ['tasks' => $tasks])
 
         </div>
     </div>

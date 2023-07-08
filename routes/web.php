@@ -16,13 +16,27 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class, 'inbox'])->name('inbox');
+Route::get('/', [HomeController::class, 'index']);
+Route::get('/inbox', [HomeController::class, 'inbox'])->name('inbox');
+
+
+Route::get('/test', function () {
+    for($i = 1; $i != 5; $i++) {
+        echo \auth()->user()->tasks()->findOrFail($i) . '<br>';
+    }
+    //    return view('sort');
+});
+
+
 // task routes
 Route::prefix('task')->group(function () {
     Route::post('/create', [TaskController::class, 'create'])->name('createTask');
-    Route::post('/update/{task}', [TaskController::class, 'update'])->name('updateTask');
-    Route::post('/destroy/{task}', [TaskController::class, 'destroy'])->name('destroyTask');
+    Route::put('/update/{task}', [TaskController::class, 'update'])->name('updateTask');
+    Route::delete('/destroy/{task}', [TaskController::class, 'destroy'])->name('destroyTask');
 });
+
+// update all tasks ondrop
+Route::put('/tasks/update', [TaskController::class, 'updateAll']);
 
 Auth::routes();
 

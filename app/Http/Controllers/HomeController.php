@@ -16,9 +16,15 @@ class HomeController extends Controller
 //        $this->middleware('auth');
     }
 
+    public function index()
+    {
+        auth()->loginUsingId(1);
+//        return view('home');
+    }
+
     public function inbox()
     {
-        $tasks = auth()->user()->tasks->where('is_archive', 0)->where('parent_id', 0)->where('is_done', 0);
+        $tasks = auth()->user()->tasks->where('is_archive', 0)->where('parent_id', 0)->where('is_done', 0)->sortBy('order');
         return view('inbox', compact('tasks'));
     }
 
@@ -27,8 +33,4 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
-    {
-        return view('home');
-    }
 }
