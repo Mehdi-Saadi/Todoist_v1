@@ -1,3 +1,8 @@
+/* main content between container class */
+.content {
+    max-width: 800px;
+}
+
 /* task button styles */
 button.w-100 > span > i {
     color: #d9534f;
@@ -49,12 +54,14 @@ button.w-100:hover > span > i {
 /* end task form styles */
 
 /* handle style */
-i.fa-arrows-up-down-left-right {
-    visibility: hidden;
-}
-div.task:hover > i.fa-arrows-up-down-left-right {
-    cursor: grab;
-    visibility: visible;
+@media only screen and (min-width: 770px) {
+    i.fa-arrows-up-down-left-right {
+        visibility: hidden;
+    }
+    div.task:hover i.fa-arrows-up-down-left-right {
+        cursor: grab;
+        visibility: visible;
+    }
 }
 /* end handle style */
 

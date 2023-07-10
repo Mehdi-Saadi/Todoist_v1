@@ -52,7 +52,12 @@
                 <!-- Begin Page Content -->
                 <div class="container">
 
-                    @yield('content')
+                    <div class="content mx-auto">
+                        <audio id="audio">
+                            <source src="./assets/sound-effect/sound.mp3" type="audio/mpeg"> Your browser does not support the audio element.
+                        </audio>
+                        @yield('content')
+                    </div>
 
                 </div>
                 <!-- /.container-fluid -->
@@ -61,7 +66,6 @@
             <!-- End of Main Content -->
 
             <!-- Footer -->
-            @include('layouts.footer')
             <!-- End of Footer -->
 
         </div>
@@ -95,6 +99,9 @@
         </div>
     </div>
 
+    <!-- send request -->
+    <script src="/assets/js/sendRequest.js"></script>
+
     <!-- Bootstrap core JavaScript-->
     <script src="/assets/vendor/jquery/jquery.min.js"></script>
     <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -113,8 +120,6 @@
     @include('sweetalert::alert')
 
     <!-- sortable scripts -->
-    <!-- jsDelivr :: Sortable :: Latest (https://www.jsdelivr.com/package/npm/sortablejs) -->
-{{--    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>--}}
     <script src="/assets/js/sortScript.js"></script>
 </body>
 </html>

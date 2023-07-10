@@ -37,6 +37,8 @@ Route::prefix('task')->group(function () {
 
 // update all tasks ondrop
 Route::put('/tasks/update', [TaskController::class, 'updateAll']);
+// set task to done
+Route::put('/tasks/done', [TaskController::class, 'setDoneTask']);
 
 Auth::routes();
 

@@ -2,11 +2,11 @@
 
 @section('content')
     <!-- Page Heading -->
-    <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+    <nav class="navbar navbar-expand  topbar mb-4 static-top">
 
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <h1 class="h3 mb-0 text-gray-800">Inbox</h1>
+                <h1 class="h5 mb-0 text-gray-800 font-weight-bolder">Inbox</h1>
             </li>
         </ul>
 
@@ -156,7 +156,7 @@
 
     <!-- show all tasks -->
     <div class="mt-4">
-        <div id="nestedRoot" class="list-group col nested-sortable pr-0" ondrop="sendRequest(serialize(root))">
+        <div id="nestedRoot" class="list-group col nested-sortable pr-0">
 
             @include('layouts.tasks', ['tasks' => $tasks])
 
@@ -165,7 +165,7 @@
     <!-- end show all tasks -->
 
     <!-- new task button -->
-    <div class="d-flex justify-content-center mt-3">
+    <div class="d-flex justify-content-center mt-3 mb-5">
         <button class="w-100 d-flex justify-content-start border-0 px-2 btn" onclick="ShowFormAndSetValue(this)" data-id="0" data-archive="0"><span><i class="fa-solid fa-plus mr-2 rounded-circle p-1"></i>Add task</span></button>
     </div>
 

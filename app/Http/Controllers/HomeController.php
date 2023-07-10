@@ -24,7 +24,8 @@ class HomeController extends Controller
 
     public function inbox()
     {
-        $tasks = auth()->user()->tasks->where('is_archive', 0)->where('parent_id', 0)->where('is_done', 0)->sortBy('order');
+//        $tasks = auth()->user()->tasks->where('is_archive', 0)->where('parent_id', 0)->where('is_done', 0)->sortBy('order');
+        $tasks = auth()->user()->tasks->where('is_archive', 0)->where('parent_id', 0)->sortBy('order');
         return view('inbox', compact('tasks'));
     }
 }

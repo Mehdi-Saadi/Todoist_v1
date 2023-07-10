@@ -53,6 +53,20 @@ class TaskController extends Controller
         return 'serialized';
     }
 
+    public function setDoneTask(Request $request)
+    {
+        // ajax request required
+        if(! $request->ajax()) {
+            return response()->json([
+                'status' => 'ajax required',
+            ]);
+        }
+
+        $this->setDone(auth()->user(), $request);
+
+        return 'done';
+    }
+
     /**
      * sets the order of given tasks
      * @param $user
@@ -71,6 +85,26 @@ class TaskController extends Controller
             ]);
             if(! empty($task['children'])) {
                 $this->setOrder(auth()->user(), $task['children'], $task['id']);
+            }
+        });
+    }
+
+    /**
+     * sets is_done to 1 for each given task
+     * @param $user
+     * @param $submittedTasks
+     * @return void
+     */
+    protected function setDone($user, $submittedTasks): void
+    {
+        $submittedTasks = collect($submittedTasks);
+        $submittedTasks->each(function ($task) use ($user) {
+            $userTask = $user->tasks()->findOrFail($task['id']);
+            $userTask->update([
+                'is_done' => 1,
+            ]);
+            if(! empty($task['children'])) {
+                $this->setDone(auth()->user(), $task['children']);
             }
         });
     }
