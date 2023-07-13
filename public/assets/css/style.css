@@ -58,15 +58,10 @@ button.w-100:hover > span > i {
     i.fa-arrows-up-down-left-right {
         visibility: hidden;
     }
-    div.task:hover i.fa-arrows-up-down-left-right {
+    div.taskSection:hover i.fa-arrows-up-down-left-right {
         cursor: grab;
         visibility: visible;
     }
 }
 /* end handle style */
 
-/* task div style */
-div.task:hover {
-    cursor: pointer;
-}
-/* end task div style */

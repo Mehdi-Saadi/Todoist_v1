@@ -1,16 +1,15 @@
 function showCheck(item) {
-    item.classList.remove('fa-circle');
-    item.classList.add('fa-circle-check');
+    item.classList.replace('fa-circle', 'fa-circle-check');
 }
 function showCircle(item) {
-    item.classList.remove('fa-circle-check');
-    item.classList.add('fa-circle');
+    item.classList.replace('fa-circle-check', 'fa-circle');
 }
 
 function done(taskId) {
     const task = document.getElementById(taskId);
     const bubble = document.getElementById('audio');
 
+    // this function will serialize the selected task and it's children
     function serialize(sortable, firstLoop = true) {
         let serialized = [];
         let children = (firstLoop === true) ? [sortable] : [].slice.call(sortable.children);
@@ -29,5 +28,5 @@ function done(taskId) {
         // hide the selected task
         bubble.play();
         setTimeout(() => task.style.display = 'none',500);
-    })
+    });
 }

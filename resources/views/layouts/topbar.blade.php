@@ -46,34 +46,41 @@
             </div>
         </li>
 
-        <div class="topbar-divider d-none d-sm-block"></div>
+        <li class="topbar-divider d-none d-sm-block"></li>
 
         <!-- Nav Item - User Information -->
         <li class="nav-item dropdown no-arrow">
-            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+            <button type="button" class="nav-link dropdown-toggle btn btn-sm" style="max-height: 50px;" id="userDropdown"
                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-lg-inline text-gray-600 small">Mehdi</span>
-            </a>
+                <span class="mr-2 d-lg-inline text-gray-600 small text-uppercase">{{ auth()->user()->email }}</span>
+            </button>
             <!-- Dropdown - User Information -->
-            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                 aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
-                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                    Profile
-                </a>
-                <a class="dropdown-item" href="#">
+            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <a href="#" class="dropdown-item btn btn-sm">
                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                     Settings
                 </a>
-                <a class="dropdown-item" href="#">
-                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                    Activity Log
-                </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                    Logout
-                </a>
+                <button type="button" class="dropdown-item btn btn-sm">
+                    <i class="fa-solid fa-palette mr-2 text-gray-400"></i>
+                    Theme
+                </button>
+                <button type="button" class="dropdown-item btn btn-sm">
+                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Activity log
+                </button>
+                <button type="button" class="dropdown-item btn btn-sm">
+                    <i class="fa-solid fa-print mr-2 text-gray-400"></i>
+                    Print
+                </button>
+                <div class="dropdown-divider"></div>
+                <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="dropdown-item btn btn-sm">
+                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Logout
+                    </button>
+                </form>
             </div>
         </li>
 

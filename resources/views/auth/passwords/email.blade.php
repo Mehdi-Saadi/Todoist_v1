@@ -1,47 +1,44 @@
-@extends('layouts.app')
+@extends('layouts.main-auth')
+
+@section('title', "Can't sign in?")
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+    @if (session('status'))
+        @php
+        toast(session('status'), 'success')
+        @endphp
+    @endif
+    <div class="col-lg-6">
+        <div class="p-2">
+            <h1 class="h2 text-gray-900 mb-5">Forgot your password?</h1>
+            <p>
+                To reset your password, please enter the email address of your Todoist account.
+            </p>
+            <form class="user" method="POST" action="{{ route('password.email') }}">
+                @csrf
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    <form method="POST" action="{{ route('password.email') }}">
-                        @csrf
-
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Send Password Reset Link') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                <div class="form-group">
+                    <label class="form-label" for="email">Email</label>
+                    <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" required autocomplete="off" autofocus>
+                    @error('email')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
                 </div>
-            </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-danger btn-block">
+                        Reset my password
+                    </button>
+                </div>
+                <div class="small text-center">
+                    <hr>
+                    <a class="text-gray-600" href="{{ route('login') }}">Go to login</a>
+                </div>
+            </form>
         </div>
     </div>
-</div>
+    <div class="col-lg-6 d-none d-lg-block">
+        <img src="/assets/img/forgot-photo.png" class="img-fluid mt-5 pt-3" alt="">
+    </div>
 @endsection

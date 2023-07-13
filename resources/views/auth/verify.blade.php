@@ -1,28 +1,25 @@
-@extends('layouts.app')
+@extends('layouts.main-auth')
+
+@section('title', "Verify email")
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Verify Your Email Address') }}</div>
-
-                <div class="card-body">
-                    @if (session('resent'))
-                        <div class="alert alert-success" role="alert">
-                            {{ __('A fresh verification link has been sent to your email address.') }}
-                        </div>
-                    @endif
-
-                    {{ __('Before proceeding, please check your email for a verification link.') }}
-                    {{ __('If you did not receive the email') }},
-                    <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
-                        @csrf
-                        <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('click here to request another') }}</button>.
-                    </form>
-                </div>
-            </div>
+    @if (session('resent'))
+        @php
+            toast('We sent a fresh verification link.', 'success')
+        @endphp
+    @endif
+    <div class="col-lg-6">
+        <div class="p-2">
+            <h1 class="h2 text-gray-900 my-5">Verify your email!</h1>
+            Before proceeding, please check your email for a verification link.<br>
+            If you did not receive the email
+            <form class="user d-inline" method="POST" action="{{ route('verification.resend') }}">
+                @csrf
+                <button type="submit" class="btn btn-link p-0 m-0 align-baseline">click here to request another</button>
+            </form>
         </div>
     </div>
-</div>
+    <div class="col-lg-6 d-none d-lg-block">
+        <img src="/assets/img/forgot-photo.png" class="img-fluid mt-5 pt-3" alt="">
+    </div>
 @endsection

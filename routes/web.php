@@ -34,12 +34,13 @@ Route::prefix('task')->group(function () {
     Route::put('/update/{task}', [TaskController::class, 'update'])->name('updateTask');
     Route::delete('/destroy/{task}', [TaskController::class, 'destroy'])->name('destroyTask');
 });
+Route::prefix('tasks')->group(function () {
+    // update all tasks ondrop
+    Route::put('/update', [TaskController::class, 'updateAll']);
+    // set task to done
+    Route::put('/done', [TaskController::class, 'setDoneTask']);
+});
 
-// update all tasks ondrop
-Route::put('/tasks/update', [TaskController::class, 'updateAll']);
-// set task to done
-Route::put('/tasks/done', [TaskController::class, 'setDoneTask']);
-
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');

@@ -13,13 +13,14 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-//        $this->middleware('auth');
+        $this->middleware(['auth', 'verified']);
     }
 
     public function index()
     {
-        auth()->loginUsingId(1);
+//        auth()->loginUsingId(1);
 //        return view('home');
+        return 'logged in!';
     }
 
     public function inbox()
