@@ -11,7 +11,7 @@
     <div class="col-lg-6">
         <div class="p-2">
             <h1 class="h2 text-gray-900 my-5">Verify your email!</h1>
-            Before proceeding, please check your email for a verification link.<br>
+            Before proceeding, please check your email for a verification link.
             If you did not receive the email
             <form class="user d-inline" method="POST" action="{{ route('verification.resend') }}">
                 @csrf

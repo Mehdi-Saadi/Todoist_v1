@@ -2,7 +2,26 @@
 .content {
     max-width: 800px;
 }
-
+.fixed-heading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    z-index: 2;
+}
+@media only screen and (max-width: 1000px){
+    .fixed-heading {
+        max-width: 670px;
+    }
+}
+@media only screen and (max-width: 767px){
+    .fixed-heading {
+        max-width: 490px;
+    }
+}
 /* task button styles */
 button.w-100 > span > i {
     color: #d9534f;
@@ -64,4 +83,3 @@ button.w-100:hover > span > i {
     }
 }
 /* end handle style */
-

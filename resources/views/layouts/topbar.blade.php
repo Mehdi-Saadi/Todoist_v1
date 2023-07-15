@@ -1,9 +1,34 @@
-<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow" style="max-height: 50px">
+<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 shadow fixed-top" style="max-height: 50px">
 
     <!-- Sidebar Toggle (Topbar) -->
-    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-        <i class="fa fa-bars text-danger"></i>
-    </button>
+{{--    <span id="sidebarToggleTop" class="btn btn-link rounded-2 mr-1">--}}
+{{--        <i class="fa fa-bars text-danger"></i>--}}
+{{--    </span>--}}
+    <ul class="navbar-nav">
+
+        <li class="nav-item dropdown no-arrow d-flex justify-content-center align-items-center">
+            <button type="button" class="nav-link dropdown-toggle d-flex justify-content-center btn btn-sm btn-link rounded-2 mr-1"
+                    style="max-height: 50px" id="menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-bars text-danger"></i>
+            </button>
+            <!-- Dropdown - menu -->
+            <div class="dropdown-menu dropdown-menu-left shadow animated--grow-in" aria-labelledby="menu" style="max-width: 400px; min-width: 250px">
+                <a class="dropdown-item btn btn-sm" href="{{ route('inbox') }}">
+                    <i class="fa-solid fa-inbox mr-2 text-primary"></i>
+                    <span>Inbox</span>
+                </a>
+                <a class="dropdown-item btn btn-sm" href="#">
+                    <i class="fa-solid fa-table-cells-large mr-2 text-warning"></i>
+                    <span>Filters & Labels</span>
+                </a>
+                <div class="dropdown-divider"></div>
+                <div class="dropdown-item-text text-gray-600 small">
+                    Projects
+                </div>
+            </div>
+        </li>
+
+    </ul>
 
     <!-- Topbar Search -->
     <form
@@ -23,7 +48,7 @@
     <ul class="navbar-nav ml-auto">
 
         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-        <li class="nav-item dropdown no-arrow d-sm-none">
+        <li class="nav-item dropdown no-arrow d-sm-none mr-1">
             <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-search fa-fw"></i>
@@ -49,13 +74,16 @@
         <li class="topbar-divider d-none d-sm-block"></li>
 
         <!-- Nav Item - User Information -->
-        <li class="nav-item dropdown no-arrow">
-            <button type="button" class="nav-link dropdown-toggle btn btn-sm" style="max-height: 50px;" id="userDropdown"
-               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-lg-inline text-gray-600 small text-uppercase">{{ auth()->user()->email }}</span>
+        <li class="nav-item dropdown no-arrow d-flex justify-content-center align-items-center">
+            <button type="button" class="nav-link dropdown-toggle btn btn-sm bg-danger d-flex justify-content-center rounded-circle"
+                    style="height: 30px; width: 30px;" id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="d-lg-inline small text-uppercase">{{ substr(auth()->user()->email, 0, 1) }}</span>
             </button>
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <div class="dropdown-item-text text-gray-600 small">
+                    {{ auth()->user()->email }}
+                </div>
                 <a href="#" class="dropdown-item btn btn-sm">
                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                     Settings

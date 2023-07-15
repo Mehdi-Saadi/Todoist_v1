@@ -4,7 +4,7 @@
 
 @section('content')
     <!-- Page Heading -->
-    <nav class="navbar navbar-expand  topbar mb-4 static-top">
+    <nav class="navbar navbar-expand  topbar mt-5 fixed-heading bg-light border-bottom">
 
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
@@ -16,16 +16,16 @@
         <ul class="navbar-nav ml-auto">
 
             <!-- Nav Item - view -->
-            <li class="nav-item dropdown no-arrow">
+            <li class="nav-item dropdown no-arrow d-flex align-items-center">
                 <button type="button" class="btn btn-sm mr-md-2 d-lg-inline text-gray-600 nav-link dropdown-toggle" title="View"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="viewDropdown" data-bs-auto-close="outside">
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="viewDropdown" data-bs-auto-close="outside" style="max-height: 40px">
                     <i class="fas fa-list fa-sm fa-fw"></i>
                 </button>
                 <!-- Dropdown - view settings -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                      aria-labelledby="viewDropdown">
                     <!-- Heading -->
-                    <div class="sidebar-heading text-gray-900 ml-4">View</div>
+                    <div class="dropdown-item-text text-gray-900">View</div>
 
                     <button type="button" class="btn btn-sm dropdown-item dropdown-toggle" id="layoutDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="mr-md-2 d-lg-inline text-gray-700 small">
@@ -44,7 +44,7 @@
                     <div class="dropdown-divider"></div>
 
                     <!-- Heading -->
-                    <div class="sidebar-heading text-gray-900 ml-4">Sort</div>
+                    <div class="dropdown-item-text text-gray-900">Sort</div>
 
                     <button class="btn btn-sm dropdown-item" id="groupDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="mr-md-2 d-lg-inline text-gray-700 small">
@@ -84,14 +84,14 @@
             </li>
 
             <!-- Nav Item - comments -->
-            <li class="nav-item" title="Comments">
-                <button class="btn btn-sm mr-md-2 d-lg-inline text-gray-600 nav-link"><i class="fa-regular fa-message"></i></button>
+            <li class="nav-item d-flex align-items-center" title="Comments">
+                <button class="btn btn-sm mr-md-2 d-lg-inline text-gray-600 nav-link" style="max-height: 40px"><i class="fa-regular fa-message"></i></button>
             </li>
 
             <!-- Nav Item - more tools -->
-            <li class="nav-item dropdown no-arrow">
-                <button type="button" class="btn btn-sm mr-md-2 d-lg-inline text-gray-600 nav-link dropdown-toggle"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="moreTools" title="More actions">
+            <li class="nav-item dropdown no-arrow d-flex align-items-center">
+                <button type="button" class="btn btn-sm d-lg-inline text-gray-600 nav-link dropdown-toggle"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="moreTools" title="More actions" style="max-height: 40px">
                     <i class="fa-solid fa-ellipsis"></i>
                 </button>
                 <!-- Dropdown - User Information -->
@@ -118,7 +118,7 @@
     <!-- end new task form -->
 
     <!-- show all tasks -->
-    <div class="mt-4">
+    <div style="margin-top: 8rem">
         <div id="nestedRoot" class="list-group col nested-sortable pr-0">
 
             @include('layouts.tasks', ['tasks' => $tasks])

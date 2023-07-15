@@ -6,6 +6,13 @@
         <div class="form-group">
             <input type="text" class="form-control my-2 border-0" style="height: 30px" placeholder="Task name" name="name" required autocomplete="off">
             <input type="text" class="form-control my-2 border-0" style="height: 20px" placeholder="Description" name="description" autocomplete="off">
+            <select name="color" class="form-select form-select-sm">
+                <option value="text-light" selected disabled>Priority</option>
+                <option value="text-danger">Priority 1</option>
+                <option value="text-warning">Priority 2</option>
+                <option value="text-primary">Priority 3</option>
+                <option value="text-light">Priority 4</option>
+            </select>
         </div>
         <div class="form-group mb-0">
             <hr>
@@ -14,27 +21,27 @@
         </div>
 
         <!-- show errors if exists -->
-        @error('task')
+        @error('name')
         @php
-            alert('', "$message", 'error');
+            toast("$message", 'error');
         @endphp
         @enderror
 
         @error('description')
         @php
-            alert('', "$message", 'error');
+            toast("$message", 'error');
         @endphp
         @enderror
 
         @error('parent_id')
         @php
-            alert('', "$message", 'error');
+            toast("$message", 'error');
         @endphp
         @enderror
 
         @error('is_archive')
         @php
-            alert('', "$message", 'error');
+            toast("$message", 'error');
         @endphp
         @enderror
 
