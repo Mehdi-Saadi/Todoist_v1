@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Task;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -26,7 +27,19 @@ class HomeController extends Controller
     public function inbox()
     {
         $tasks = auth()->user()->tasks->where('is_archive', 0)->where('parent_id', 0)->where('is_done', 0)->sortBy('order');
+        $labels = auth()->user()->labels;
 //        $tasks = auth()->user()->tasks->where('is_archive', 0)->where('parent_id', 0)->sortBy('order');
-        return view('inbox', compact('tasks'));
+        return view('inbox', compact(['tasks', 'labels']));
+    }
+
+    public function taskDetails(Request $request)
+    {
+        return $request;
+    }
+
+    public function filter_label()
+    {
+        $labels = auth()->user()->labels->sortBy('order');
+        return view('labels', compact('labels'));
     }
 }

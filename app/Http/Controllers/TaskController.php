@@ -10,23 +10,32 @@ class TaskController extends Controller
 {
     public function create(Request $request)
     {
+        $user = auth()->user();
+
         $data = $request->validate([
-            'parent_id' => ['required', Rule::in(['0', Rule::exists('tasks', 'id')])],
             'is_archive' => ['required', Rule::in(['0', '1'])],
+            'color' => [Rule::in(['text-danger', 'text-warning', 'text-primary', ''])],
             'name' => ['required'],
             'description' => ['max:255'],
         ]);
 
-        $user = auth()->user();
+        if($request->parent_id != 0) {
+            $data += $request->validate([
+                'parent_id' => ['required', Rule::exists('tasks', 'id')->where('user_id', $user->id)],
+            ]);
+        } else {
+            $data += $request->validate([
+                'parent_id' => ['required'],
+            ]);
+        }
 
         // add the submited task at end of list for first time
         $data['order'] = $user->tasks()->where('is_archive', 0)->where('parent_id', 0)->max('order');
         ++$data['order'];
 
-        $user->tasks()->create($data);
+        $task = $user->tasks()->create($data);
 
-        toast('Task created', 'success');
-        return back();
+        return response()->json($task);
     }
 
     public function update(Request $request, Task $task)

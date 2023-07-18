@@ -1,5 +1,5 @@
 // Get the modal
-let modal = document.getElementById('taskForm');
+let modal = document.getElementById('taskDetails');
 
 // When the user clicks anywhere outside the modal, close it
 window.onclick = function(event) {
@@ -9,12 +9,33 @@ window.onclick = function(event) {
 }
 
 // show the send comment form and set the value of parent id
-function ShowFormAndSetValue(button) {
-    document.getElementById('taskForm').style.display='block';
+function showForm(formId) {
+    document.getElementById(formId).style.display='block';
+}
+
+function scrollToBottom() {
+    window.scrollTo(0, document.body.scrollHeight);
+}
+
+function hideForm(formId) {
+    document.getElementById(formId).style.display='none';
+}
+
+function setValueAndShowForm(button, formId) {
     // get hidden inputs
     let parent_id = document.getElementById('parent_id');
     let is_archive = document.getElementById('is_archive');
     // set value
     parent_id.value = $(button).data('id'); // set the parent id of given name
     is_archive.value = $(button).data('archive'); // set is_archive 1 if user is adding archive
+    showForm(formId);
+    scrollToBottom();
+}
+
+function showBtn(buttonId) {
+    document.getElementById(buttonId).style.display='flex';
+}
+
+function hideBtn(buttonId) {
+    document.getElementById(buttonId).style.display='none';
 }

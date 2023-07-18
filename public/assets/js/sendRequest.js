@@ -12,7 +12,7 @@ function sendRequest(type, url, data, success) {
         data: JSON.stringify(data),
         success: success,
         error: function () {
-            console.log('sorry, there is an error...')
+            toast_alert('error', 'Sorry, there is an error...');
         }
     });
 }

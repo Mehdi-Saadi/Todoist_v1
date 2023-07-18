@@ -17,12 +17,12 @@
     <link href="/assets/fontawesome/css/solid.min.css" rel="stylesheet" type="text/css">
     <link href="/assets/fontawesome/css/regular.min.css" rel="stylesheet" type="text/css">
 
-{{--    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">--}}
-
     <!-- Custom styles for this template-->
     <link href="/assets/css/sb-admin-2.css" rel="stylesheet">
     <!-- custom styles -->
     <link href="/assets/css/style.css" rel="stylesheet">
+
+    <script src="/assets/js/sweetalert2/dist/sweetalert2.all.min.js"></script>
 </head>
 
 <body id="page-top">
@@ -80,6 +80,10 @@
     <!-- send request -->
     <script src="/assets/js/sendRequest.js"></script>
 
+    <!-- sweetalert -->
+    <script src="/assets/js/alert.js"></script>
+    @include('sweetalert::alert')
+
     <!-- Bootstrap core JavaScript-->
     <script src="/assets/vendor/jquery/jquery.min.js"></script>
     <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -90,14 +94,9 @@
     <!-- Custom scripts for all pages-->
     <script src="/assets/js/sb-admin-2.min.js"></script>
 
-    <!-- task form scripts -->
-    <script src="/assets/js/taskForm.js"></script>
-    <script src="/assets/js/doneCircleEffect.js"></script>
+    <!-- show form scripts -->
+    <script src="/assets/js/showFormAndSetValue.js"></script>
 
-    <!-- sweetalert -->
-    @include('sweetalert::alert')
-
-    <!-- sortable scripts -->
-    <script src="/assets/js/sortScript.js"></script>
+    @yield('script')
 </body>
 </html>

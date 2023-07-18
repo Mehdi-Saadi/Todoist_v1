@@ -27,6 +27,7 @@ function done(taskId) {
         // if response was successfull
         // hide the selected task
         bubble.play();
+        toast_alert('success', '1 task completed');
         setTimeout(() => task.style.display = 'none',500);
     });
 }

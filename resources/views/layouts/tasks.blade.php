@@ -4,9 +4,9 @@
             <div class="row navbar navbar-expand p-0">
                 <ul class="navbar-nav mr-auto">
                     <li><button class="btn btn-sm p-0 ml-4 rounded-circle d-inline-flex justify-content-center" style="width: 15px; height: 15px;">
-                            <i class="fa-regular fa-circle" onmouseover="showCheck(this)" onmouseleave="showCircle(this)" onclick="done('{{ $task->id }}')"></i>
+                            <i class="fa-regular fa-circle {{ $task->color }}" onmouseover="showCheck(this)" onmouseleave="showCircle(this)" onclick="done('{{ $task->id }}')"></i>
                         </button></li>
-                    <li><button type="button" class="btn btn-sm pt-0 ml-2" onclick="">{{ $task->name }}</button></li>
+                    <li><button type="button" class="btn btn-sm pt-0 ml-2" onclick="sendRequest('post', '/task', {{ $task->id }}, function () {showForm('taskDetails');})">{{ $task->name }}</button></li>
                 </ul>
                 <!-- tools -->
                 <ul class="navbar-nav ml-auto">
