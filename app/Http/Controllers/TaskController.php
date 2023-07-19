@@ -10,6 +10,13 @@ class TaskController extends Controller
 {
     public function create(Request $request)
     {
+        // ajax request required
+        if(! $request->ajax()) {
+            return response()->json([
+                'status' => 'ajax required',
+            ]);
+        }
+
         $user = auth()->user();
 
         $data = $request->validate([

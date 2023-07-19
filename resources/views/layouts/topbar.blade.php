@@ -85,27 +85,31 @@
                     {{ auth()->user()->email }}
                 </div>
                 <a href="#" class="dropdown-item btn btn-sm">
-                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-500"></i>
                     Settings
                 </a>
                 <div class="dropdown-divider"></div>
                 <button type="button" class="dropdown-item btn btn-sm">
-                    <i class="fa-solid fa-palette mr-2 text-gray-400"></i>
+                    <i class="fa-solid fa-palette mr-2 text-gray-500"></i>
                     Theme
                 </button>
                 <button type="button" class="dropdown-item btn btn-sm">
-                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-500"></i>
                     Activity log
                 </button>
-                <button type="button" class="dropdown-item btn btn-sm">
-                    <i class="fa-solid fa-print mr-2 text-gray-400"></i>
-                    Print
+                <button type="button" class="dropdown-item btn btn-sm" onclick="pngExport('nestedRoot')">
+                    <i class="fa-regular fa-image mr-2 text-gray-500"></i>
+                    Export PNG
+                </button>
+                <button type="button" class="dropdown-item btn btn-sm" onclick="pdfExport('nestedRoot')">
+                    <i class="fa-regular fa-file mr-2 text-gray-500"></i>
+                    Export PDF
                 </button>
                 <div class="dropdown-divider"></div>
                 <form action="{{ route('logout') }}" method="POST">
                     @csrf
                     <button type="submit" class="dropdown-item btn btn-sm">
-                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-500"></i>
                         Logout
                     </button>
                 </form>

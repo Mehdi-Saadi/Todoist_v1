@@ -23,13 +23,22 @@
     }
 }
 /* task button styles */
-button.w-100 > span > i {
+button.w-100 > i {
     color: #d9534f;
+    width: 18px;
+    height: 18px;
+    transform: translate(0, 20%);
+}
+button.w-100 > i:before {
+    position: relative;
+    top: 50%;
+    transform: translate(-18%, -50%);
+    display: block;
 }
 button.w-100:hover {
     color: #d9534f;
 }
-button.w-100:hover > span > i {
+button.w-100:hover > i {
     background: #d9534f;
     color: #fff;
 }

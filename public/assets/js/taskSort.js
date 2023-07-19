@@ -35,3 +35,4 @@ function taskSort() {
         });
     }
 }
+taskSort();

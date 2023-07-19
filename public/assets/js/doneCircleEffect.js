@@ -8,6 +8,7 @@ function showCircle(item) {
 function done(taskId) {
     const task = document.getElementById(taskId);
     const bubble = document.getElementById('audio');
+    let count = 0;
 
     // this function will serialize the selected task and it's children
     function serialize(sortable, firstLoop = true) {
@@ -23,11 +24,28 @@ function done(taskId) {
         return serialized;
     }
 
-    sendRequest('put', '/tasks/done', serialize(task), function () {
+    let data = serialize(task);
+
+    function computeCountOfTasks(data) {
+        data.forEach(function (task) {
+            count++;
+            if(task.children)
+                computeCountOfTasks(task.children);
+        });
+    }
+
+    computeCountOfTasks(data);
+
+    sendRequest('put', '/tasks/done', data, function () {
         // if response was successfull
         // hide the selected task
         bubble.play();
-        toast_alert('success', '1 task completed');
-        setTimeout(() => task.style.display = 'none',500);
+        if(count === 1) {
+            toast_alert('', '1 task completed');
+        } else {
+            toast_alert('', count + ' tasks completed');
+        }
+        setTimeout(() => task.remove(),500);
+
     });
 }

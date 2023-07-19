@@ -21,8 +21,6 @@
     <link href="/assets/css/sb-admin-2.css" rel="stylesheet">
     <!-- custom styles -->
     <link href="/assets/css/style.css" rel="stylesheet">
-
-    <script src="/assets/js/sweetalert2/dist/sweetalert2.all.min.js"></script>
 </head>
 
 <body id="page-top">
@@ -80,7 +78,17 @@
     <!-- send request -->
     <script src="/assets/js/sendRequest.js"></script>
 
+    <!-- html2canvas & html2pdf.js & canvas@image library -->
+    <script src="/assets/js/html2canvas/dist/html2canvas.min.js"></script>
+    <script src="/assets/js/html2pdf.js/dist/html2pdf.bundle.min.js"></script>
+    <script src="/assets/js/canvas2image/canvas2image.js"></script>
+
+    <!-- export -->
+    <script src="/assets/js/pngExport.js"></script>
+    <script src="/assets/js/pdfExport.js"></script>
+
     <!-- sweetalert -->
+    <script src="/assets/js/sweetalert2/dist/sweetalert2.all.min.js"></script>
     <script src="/assets/js/alert.js"></script>
     @include('sweetalert::alert')
 
