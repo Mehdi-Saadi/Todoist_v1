@@ -9,13 +9,12 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Todoist - @yield('title')</title>
+    <title>@yield('title'): Todoist</title>
 
     <!-- font awesome -->
-    <link href="/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href="/assets/fontawesome/css/fontawesome.min.css" rel="stylesheet" type="text/css">
-    <link href="/assets/fontawesome/css/solid.min.css" rel="stylesheet" type="text/css">
-    <link href="/assets/fontawesome/css/regular.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/vendor/fontawesome/css/fontawesome.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/vendor/fontawesome/css/solid.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/vendor/fontawesome/css/regular.min.css" rel="stylesheet" type="text/css">
 
     <!-- Custom styles for this template-->
     <link href="/assets/css/sb-admin-2.css" rel="stylesheet">
