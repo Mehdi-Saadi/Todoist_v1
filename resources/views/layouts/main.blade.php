@@ -11,15 +11,8 @@
 
     <title>@yield('title'): Todoist</title>
 
-    <!-- font awesome -->
-    <link href="/assets/vendor/fontawesome/css/fontawesome.min.css" rel="stylesheet" type="text/css">
-    <link href="/assets/vendor/fontawesome/css/solid.min.css" rel="stylesheet" type="text/css">
-    <link href="/assets/vendor/fontawesome/css/regular.min.css" rel="stylesheet" type="text/css">
-
-    <!-- Custom styles for this template-->
-    <link href="/assets/css/sb-admin-2.css" rel="stylesheet">
-    <!-- custom styles -->
-    <link href="/assets/css/style.css" rel="stylesheet">
+    @vite('resources/js/app.js')
+    @stack('script')
 </head>
 
 <body id="page-top">
@@ -46,7 +39,7 @@
 
                     <div class="content mx-auto">
                         <audio id="audio">
-                            <source src="./assets/sound-effect/sound.mp3" type="audio/mpeg"> Your browser does not support the audio element.
+                            <source src="{{ asset('/assets/sound-effect/sound.mp3') }}" type="audio/mpeg"> Your browser does not support the audio element.
                         </audio>
                         @yield('content')
                     </div>
@@ -66,44 +59,18 @@
     </div>
     <!-- End of Page Wrapper -->
 
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
+{{--    <!-- Scroll to Top Button-->--}}
+{{--    <a class="scroll-to-top rounded" href="#page-top">--}}
+{{--        <i class="fas fa-angle-up"></i>--}}
+{{--    </a>--}}
 
-    <!-- sortablejs library -->
-    <script src="/assets/js/sortablejs/Sortable.min.js"></script>
-
-    <!-- send request -->
-    <script src="/assets/js/sendRequest.js"></script>
-
-    <!-- html2canvas & html2pdf.js & canvas@image library -->
-    <script src="/assets/js/html2canvas/dist/html2canvas.min.js"></script>
-    <script src="/assets/js/html2pdf.js/dist/html2pdf.bundle.min.js"></script>
-    <script src="/assets/js/canvas2image/canvas2image.js"></script>
-
-    <!-- export -->
-    <script src="/assets/js/pngExport.js"></script>
-    <script src="/assets/js/pdfExport.js"></script>
-
-    <!-- sweetalert -->
-    <script src="/assets/js/sweetalert2/dist/sweetalert2.all.min.js"></script>
-    <script src="/assets/js/alert.js"></script>
     @include('sweetalert::alert')
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="/assets/vendor/jquery/jquery.min.js"></script>
-    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script src="{{ asset('/assets/vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="/assets/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="/assets/js/sb-admin-2.min.js"></script>
-
-    <!-- show form scripts -->
-    <script src="/assets/js/showFormAndSetValue.js"></script>
-
-    @yield('script')
+    <script src="{{ asset('/assets/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
 </body>
 </html>

@@ -2,6 +2,10 @@
 
 @section('title', 'Inbox')
 
+@push('script')
+    @vite('resources/js/inbox.js')
+@endpush
+
 @section('content')
     <!-- Page Heading -->
     <nav class="navbar navbar-expand  topbar mt-5 fixed-heading bg-light border-bottom">
@@ -140,16 +144,4 @@
     {{--                    <div class="row">--}}
 
     {{--                    </div>--}}
-@endsection
-
-@section('script')
-    <!-- set priority value on click -->
-    <script src="/assets/js/selectPriority.js"></script>
-
-    <script src="/assets/js/doneCircleEffect.js"></script>
-    <!-- sortable scripts -->
-    <script src="/assets/js/taskSort.js"></script>
-
-    <!-- sends ajax request for adding new tasks -->
-    <script src="/assets/js/addTaskRequest.js"></script>
 @endsection

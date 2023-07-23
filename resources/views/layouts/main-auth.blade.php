@@ -8,16 +8,7 @@
 
     <title>@yield('title')</title>
 
-    <!-- Custom fonts for this template-->
-    <link href="/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-
-    <!-- font awesome -->
-    <link href="/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href="/assets/fontawesome/css/fontawesome.min.css" rel="stylesheet" type="text/css">
-    <link href="/assets/fontawesome/css/solid.min.css" rel="stylesheet" type="text/css">
-
-    <!-- Custom styles for this template-->
-    <link href="/assets/css/sb-admin-2.min.css" rel="stylesheet">
+    @vite('resources/js/auth.js')
 </head>
 
 <body>
@@ -50,15 +41,12 @@
 
 </div>
 
-<!-- Bootstrap core JavaScript-->
-<script src="/assets/vendor/jquery/jquery.min.js"></script>
-<script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script src="{{ asset('/assets/vendor/jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
 <!-- Core plugin JavaScript-->
-<script src="/assets/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-<!-- Custom scripts for all pages-->
-<script src="/assets/js/sb-admin-2.min.js"></script>
+<script src="{{ asset('/assets/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
 
 @include('sweetalert::alert')
 
