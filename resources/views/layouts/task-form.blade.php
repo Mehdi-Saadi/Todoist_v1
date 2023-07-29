@@ -27,20 +27,20 @@
                 </button>
             </div>
         </div>
-        <div class="dropdown no-arrow d-inline">
-            <button type="button" class="dropdown-toggle btn btn-sm border ml-2"
-                    id="labelDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fa-solid fa-tags mr-1"></i>Labels
-            </button>
-            <!-- Dropdown - labels -->
-            <div class="dropdown-menu shadow" aria-labelledby="labelDropDown">
-                @foreach($labels as $label)
-                    <button type="button" class="dropdown-item btn btn-sm" onclick="setColor(1)">
-                        <i class="fa-solid fa-tag mr-1 {{ $label->color }}"></i>{{ $label->name }}
-                    </button>
-                @endforeach
-            </div>
-        </div>
+{{--        <div class="dropdown no-arrow d-inline">--}}
+{{--            <button type="button" class="dropdown-toggle btn btn-sm border ml-2"--}}
+{{--                    id="labelDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+{{--                <i class="fa-solid fa-tags mr-1"></i>Labels--}}
+{{--            </button>--}}
+{{--            <!-- Dropdown - labels -->--}}
+{{--            <div class="dropdown-menu shadow" aria-labelledby="labelDropDown">--}}
+{{--                @foreach($labels as $label)--}}
+{{--                    <button type="button" class="dropdown-item btn btn-sm" onclick="setColor(1)">--}}
+{{--                        <i class="fa-solid fa-tag mr-1 {{ $label->color }}"></i>{{ $label->name }}--}}
+{{--                    </button>--}}
+{{--                @endforeach--}}
+{{--            </div>--}}
+{{--        </div>--}}
     </div>
     <hr>
     <div class="form-group mb-0">

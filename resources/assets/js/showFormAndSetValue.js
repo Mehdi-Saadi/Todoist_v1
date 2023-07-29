@@ -1,26 +1,21 @@
 // Get the modal
 let modal = document.getElementById('taskDetails');
-
 // When the user clicks anywhere outside the modal, close it
 window.onclick = function(event) {
     if (event.target === modal) {
         modal.style.display = "none";
     }
 }
-
 // show the send comment form and set the value of parent id
 export function showForm(formId) {
     document.getElementById(formId).style.display='block';
 }
-
 export function scrollToBottom() {
     window.scrollTo(0, document.body.scrollHeight);
 }
-
 export function hideForm(formId) {
     document.getElementById(formId).style.display='none';
 }
-
 export function setValueAndShowForm(button, formId) {
     // get hidden inputs
     let parent_id = document.getElementById('parent_id');
@@ -31,11 +26,9 @@ export function setValueAndShowForm(button, formId) {
     showForm(formId);
     scrollToBottom();
 }
-
 export function showBtn(buttonId) {
     document.getElementById(buttonId).style.display='flex';
 }
-
 export function hideBtn(buttonId) {
     document.getElementById(buttonId).style.display='none';
 }

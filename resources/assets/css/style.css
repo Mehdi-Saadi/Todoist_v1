@@ -12,14 +12,19 @@
     margin: 0 auto;
     z-index: 1020;
 }
-@media only screen and (max-width: 1000px){
+@media only screen and (max-width: 991px){
     .fixed-heading {
-        max-width: 670px;
+        max-width: 672px;
     }
 }
 @media only screen and (max-width: 767px){
     .fixed-heading {
-        max-width: 490px;
+        max-width: 492px;
+    }
+}
+@media only screen and (max-width: 575px){
+    .fixed-heading {
+        max-width: 527px;
     }
 }
 /* task button styles */
@@ -32,7 +37,7 @@ button.w-100 > i {
 button.w-100 > i:before {
     position: relative;
     top: 50%;
-    transform: translate(-18%, -50%);
+    transform: translate(-20%, -50%);
     display: block;
 }
 button.w-100:hover {
@@ -98,3 +103,16 @@ button.w-100:hover > i {
     }
 }
 /* end handle style */
+.done-circle-btn {
+    width: 18px;
+    height: 18px;
+}
+.done-circle-btn > i {
+    transform: translate(20%, 155%);
+}
+.done-circle-btn > i:before {
+    position: relative;
+    top: 50%;
+    transform: translate(-20%, 800%);
+    display: block;
+}

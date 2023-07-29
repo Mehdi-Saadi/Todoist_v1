@@ -17,29 +17,29 @@ import Swal from 'sweetalert2/dist/sweetalert2.all.min';
 window.Swal = Swal;
 
 // send request
-import {sendRequest} from '../assets/js/sendRequest.js'
+import {sendRequest} from '../assets/js/sendRequest'
 window.sendRequest = sendRequest;
 
 // export
-import {pngExport} from '../assets/js/pngExport.js';
+import {pngExport} from '../assets/js/pngExport';
 window.pngExport = pngExport;
-import {pdfExport} from '../assets/js/pdfExport.js';
+import {pdfExport} from '../assets/js/pdfExport';
 window.pdfExport = pdfExport;
 
 // sweetalert
-import {toast_alert} from '../assets/js/alert.js';
+import {toast_alert} from '../assets/js/alert';
 window.toast_alert = toast_alert;
 
 // show form scripts
-import {showForm} from '../assets/js/showFormAndSetValue.js';
+import {showForm} from '../assets/js/showFormAndSetValue';
 window.showForm = showForm;
-import {scrollToBottom} from '../assets/js/showFormAndSetValue.js';
+import {scrollToBottom} from '../assets/js/showFormAndSetValue';
 window.scrollToBottom = scrollToBottom;
-import {hideForm} from '../assets/js/showFormAndSetValue.js';
+import {hideForm} from '../assets/js/showFormAndSetValue';
 window.hideForm = hideForm;
-import {setValueAndShowForm} from '../assets/js/showFormAndSetValue.js';
+import {setValueAndShowForm} from '../assets/js/showFormAndSetValue';
 window.setValueAndShowForm = setValueAndShowForm;
-import {showBtn} from '../assets/js/showFormAndSetValue.js';
+import {showBtn} from '../assets/js/showFormAndSetValue';
 window.showBtn = showBtn;
-import {hideBtn} from '../assets/js/showFormAndSetValue.js';
+import {hideBtn} from '../assets/js/showFormAndSetValue';
 window.hideBtn = hideBtn;

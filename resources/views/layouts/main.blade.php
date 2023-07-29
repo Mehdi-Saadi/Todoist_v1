@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="Mehdi Saadi">
 
-    <!-- CSRF Token -->
+    {{-- CSRF Token --}}
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('title'): Todoist</title>
+    <title>@yield('title'): Todotask</title>
 
     @vite('resources/js/app.js')
     @stack('script')
@@ -17,24 +16,23 @@
 
 <body id="page-top">
 
-    <!-- Page Wrapper -->
+    {{-- Page Wrapper --}}
     <div id="wrapper">
 
-        <!-- Sidebar -->
+{{--        <!-- Sidebar -->--}}
 {{--        @include('layouts.sidebar')--}}
-        <!-- End of Sidebar -->
+{{--        <!-- End of Sidebar -->--}}
 
-        <!-- Content Wrapper -->
+        {{-- Content Wrapper --}}
         <div id="content-wrapper" class="d-flex flex-column">
 
-            <!-- Main Content -->
+            {{-- Main Content --}}
             <div id="content">
 
-                <!-- Topbar -->
+                {{-- Topbar --}}
                 @include('layouts.topbar')
-                <!-- End of Topbar -->
 
-                <!-- Begin Page Content -->
+                {{-- Begin Page Content --}}
                 <div class="container">
 
                     <div class="content mx-auto">
@@ -45,19 +43,18 @@
                     </div>
 
                 </div>
-                <!-- /.container-fluid -->
 
             </div>
-            <!-- End of Main Content -->
+            {{-- End of Main Content --}}
 
-            <!-- Footer -->
-            <!-- End of Footer -->
+{{--            <!-- Footer -->--}}
+{{--            <!-- End of Footer -->--}}
 
         </div>
-        <!-- End of Content Wrapper -->
+        {{-- End of Content Wrapper --}}
 
     </div>
-    <!-- End of Page Wrapper -->
+    {{-- End of Page Wrapper --}}
 
 {{--    <!-- Scroll to Top Button-->--}}
 {{--    <a class="scroll-to-top rounded" href="#page-top">--}}
@@ -66,11 +63,11 @@
 
     @include('sweetalert::alert')
 
-    <!-- Bootstrap core JavaScript -->
+    {{-- Bootstrap core JavaScript --}}
     <script src="{{ asset('/assets/vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
-    <!-- Core plugin JavaScript-->
+    {{-- Core plugin JavaScript --}}
     <script src="{{ asset('/assets/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
 </body>
 </html>

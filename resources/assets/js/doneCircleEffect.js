@@ -4,48 +4,40 @@ export function showCheck(item) {
 export function showCircle(item) {
     item.classList.replace('fa-circle-check', 'fa-circle');
 }
-
-export function done(taskId) {
+export function serializeAndSendRequestDone(taskId) {
     const task = document.getElementById(taskId);
     const bubble = document.getElementById('audio');
-    let count = 0;
 
-    // this function will serialize the selected task and it's children
-    function serialize(sortable, firstLoop = true) {
-        let serialized = [];
-        let children = (firstLoop === true) ? [sortable] : [].slice.call(sortable.children);
-        for (let i in children) {
-            let nested = children[i].querySelector('.nested-sortable');
-            serialized.push({
-                id: children[i].dataset['sortableId'],
-                children: nested ? serialize(nested, false) : []
-            });
-        }
-        return serialized;
-    }
+    // hide the selected task
+    bubble.play();
+    toast_alert('', 'task completed');
+    setTimeout(() => task.style.display = 'none',500);
 
-    let data = serialize(task);
+    sendRequest('put', '/tasks/done', serializeTasks(task), function () {
+        console.log('done')
+    });
+}
+// Todo this section is not completed
+export function serializeAndSendRequestNotDone(taskId, isDone) {
+    // isDone must be bool
+    if(isDone === 1 || isDone === 0) {
+        const task = document.getElementById(taskId);
+        const bubble = document.getElementById('audio');
+        // let count = 0;
+        // let data = serializeTasks(task);
 
-    function computeCountOfTasks(data) {
-        data.forEach(function (task) {
-            count++;
-            if(task.children)
-                computeCountOfTasks(task.children);
+        // function computeCountOfTasks(data) {
+        //     data.forEach(function (task) {
+        //         count++;
+        //         if(task.children)
+        //             computeCountOfTasks(task.children);
+        //     });
+        // }
+        //
+        // computeCountOfTasks(data);
+
+        sendRequest('put', '/tasks/notDone', serializeTasks(task), function () {
+            console.log('done')
         });
     }
-
-    computeCountOfTasks(data);
-
-    sendRequest('put', '/tasks/done', data, function () {
-        // if response was successfull
-        // hide the selected task
-        bubble.play();
-        if(count === 1) {
-            toast_alert('', '1 task completed');
-        } else {
-            toast_alert('', count + ' tasks completed');
-        }
-        setTimeout(() => task.remove(),500);
-
-    });
 }

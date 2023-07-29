@@ -15,10 +15,19 @@ document.querySelector('#taskForm').addEventListener('submit', function (event) 
             '<div class="taskSection">' +
             '<div class="row navbar navbar-expand p-0">' +
             '<ul class="navbar-nav mr-auto">' +
-            '<li><button class="btn btn-sm p-0 ml-4 rounded-circle d-inline-flex justify-content-center" style="width: 15px; height: 15px;">' +
-            '<i class="fa-regular fa-circle ' + task.color + '" onmouseover="showCheck(this)" onmouseleave="showCircle(this)" onclick="done(' + task.id + ')"></i>' +
+            '<li><button class="btn btn-sm shadow-none p-0 ml-4 rounded-circle d-inline-flex justify-content-center done-circle-btn">' +
+            '<i class="fa-regular fa-circle fa-lg ' + task.color + '" onmouseover="showCheck(this)" onmouseleave="showCircle(this)" onclick="serializeAndSendRequestDone(' + task.id + ')"></i>' +
             '</button></li>' +
-            '<li><button type="button" class="btn btn-sm pt-0 ml-2" onclick="sendRequest(\'post\', \'/task\', ' + task.id + ', function () {showForm(\'taskDetails\');})">' + task.name + '</button></li>' +
+            // '<li><button type="button" class="btn btn-sm pt-0 ml-2" onclick="sendRequest(\'post\', \'/task\', ' + task.id + ', function () {showForm(\'taskDetails\');})">' + task.name + '</button></li>' +
+            '<li class="dropdown no-arrow">' +
+            '<button type="button" class="dropdown-toggle btn btn-sm pt-0 ml-2" id="task-' + task.id + '" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' + task.name + '</button>' +
+            '<div class="dropdown-menu dropdown-menu shadow animated--grow-in" aria-labelledby="task-' + task.id + '">' +
+            '<button type="button" class="dropdown-item btn btn-sm" onclick="deleteTask(' + task.id + ', \'' + task.name + '\')">' +
+            '<i class="fa-regular fa-trash-can mr-2 text-danger"></i>' +
+            'Delete task' +
+            '</button>' +
+            '</div>' +
+            '</li>' +
             '</ul>' +
             '<ul class="navbar-nav ml-auto">' +
             '<li><i class="fa-solid fa-arrows-up-down-left-right text-gray-500 mr-3 p-1"></i></li>' +
@@ -42,5 +51,4 @@ document.querySelector('#taskForm').addEventListener('submit', function (event) 
     selectPriority(4);
     target.querySelector('input[name="name"]').value = '';
     target.querySelector('input[name="description"]').value = '';
-
 });

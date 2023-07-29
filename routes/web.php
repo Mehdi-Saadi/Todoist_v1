@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\LabelController;
+//use App\Http\Controllers\LabelController;
 use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -21,36 +21,37 @@ Auth::routes(['verify' => true]);
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/inbox', [HomeController::class, 'inbox'])->name('inbox');
-Route::get('/filter_label', [HomeController::class, 'filter_label'])->name('filter_label');
+//Route::get('/filter_label', [HomeController::class, 'filter_label'])->name('filter_label');
 
-Route::get('/test', function () {
-    for($i = 1; $i != 5; $i++) {
-        echo \auth()->user()->tasks()->findOrFail($i) . '<br>';
-    }
-    //    return view('sort');
-});
+//Route::get('/test', function () {
+//    for($i = 1; $i != 5; $i++) {
+//        echo \auth()->user()->tasks()->findOrFail($i) . '<br>';
+//    }
+//    //    return view('sort');
+//});
 
 // task routes
 Route::prefix('task')->group(function () {
-    Route::post('/', [HomeController::class, 'taskDetails']);
+//    Route::post('/', [HomeController::class, 'taskDetails']);
     Route::post('/create', [TaskController::class, 'create'])->name('createTask');
     Route::put('/update/{task}', [TaskController::class, 'update'])->name('updateTask');
-    Route::delete('/destroy/{task}', [TaskController::class, 'destroy'])->name('destroyTask');
+    Route::delete('/destroy', [TaskController::class, 'destroy'])->name('destroyTask');
 });
 
 Route::prefix('tasks')->group(function () {
-    // update all tasks ondrop
+    // update all tasks ondrop (sorting)
     Route::put('/update', [TaskController::class, 'updateAll']);
     // set task to done
-    Route::put('/done', [TaskController::class, 'setDoneTask']);
+    Route::put('/done', [TaskController::class, 'setTaskDone']);
+    // set task to not done
+    Route::put('/notDone', [TaskController::class, 'setTaskNotDone']);
 });
 
 // label routes
-Route::prefix('label')->group(function () {
-    Route::post('/create', [TaskController::class, 'create'])->name('createLabel');
-    Route::put('/update/{task}', [TaskController::class, 'update'])->name('updateLabel');
-    Route::delete('/destroy/{task}', [TaskController::class, 'destroy'])->name('destroyLabel');
-});
+//Route::prefix('label')->group(function () {
+//    Route::post('/create', [TaskController::class, 'create'])->name('createLabel');
+//    Route::put('/update/{task}', [TaskController::class, 'update'])->name('updateLabel');
+//    Route::delete('/destroy/{task}', [TaskController::class, 'destroy'])->name('destroyLabel');
+//});
 
-Route::put('/labels/update', [LabelController::class, 'updateAll']);
-
+//Route::put('/labels/update', [LabelController::class, 'updateAll']);

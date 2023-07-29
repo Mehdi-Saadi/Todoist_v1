@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Task;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -20,15 +19,15 @@ class HomeController extends Controller
     public function index()
     {
 //        auth()->loginUsingId(1);
-//        return view('home');
         return 'logged in!';
     }
 
     public function inbox()
     {
-        $tasks = auth()->user()->tasks->where('is_archive', 0)->where('parent_id', 0)->where('is_done', 0)->sortBy('order');
-        $labels = auth()->user()->labels;
-//        $tasks = auth()->user()->tasks->where('is_archive', 0)->where('parent_id', 0)->sortBy('order');
+        $user = auth()->user();
+        $tasks = $user->tasks->where('is_archive', 0)->where('parent_id', 0)->sortBy('order');
+        $labels = $user->labels;
+
         return view('inbox', compact(['tasks', 'labels']));
     }
 

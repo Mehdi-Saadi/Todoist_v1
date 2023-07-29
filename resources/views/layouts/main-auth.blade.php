@@ -11,7 +11,7 @@
     @vite('resources/js/auth.js')
 </head>
 
-<body>
+<body class="bg-white">
 
 <div class="container">
 

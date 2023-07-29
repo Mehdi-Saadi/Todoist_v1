@@ -42,6 +42,6 @@
         </div>
     </div>
     <div class="col-lg-6 d-none d-lg-block">
-        <img src="/assets/img/login-photo.png" class="img-fluid mt-5 pt-5">
+        <img src="{{ asset('/assets/img/login-photo.png') }}" class="img-fluid mt-5 pt-5" alt="">
     </div>
 @endsection

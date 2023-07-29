@@ -9786,6 +9786,7 @@ html {
 
 body {
   height: 100%;
+  background-color: #f8f9fc;
 }
 
 a:focus {
@@ -9797,7 +9798,6 @@ a:focus {
 }
 
 #wrapper #content-wrapper {
-  background-color: #f8f9fc;
   width: 100%;
   overflow-x: hidden;
 }
