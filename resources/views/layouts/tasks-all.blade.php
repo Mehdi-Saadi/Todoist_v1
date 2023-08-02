@@ -5,7 +5,11 @@
                 <ul class="navbar-nav mr-auto">
                     <li>
                         <button class="btn btn-sm shadow-none p-0 ml-4 rounded-circle d-inline-flex justify-content-center done-circle-btn">
-                            <i class="fa-regular fa-circle fa-lg {{ $task->color }}" onmouseover="showCheck(this)" onmouseleave="showCircle(this)" onclick="serializeAndSendRequestDone('{{ $task->id }}')"></i>
+                            @if($task->is_done)
+                                <i class="fa-regular fa-circle-check fa-lg {{ $task->color }}" onmouseover="showCircle(this)" onmouseleave="showCheck(this)" onclick="serializeAndSendRequestNotDone('{{ $task->id }}')"></i>
+                            @else
+                                <i class="fa-regular fa-circle fa-lg {{ $task->color }}" onmouseover="showCheck(this)" onmouseleave="showCircle(this)" onclick="serializeAndSendRequestDone('{{ $task->id }}')"></i>
+                            @endif
                         </button>
                     </li>
                     <li class="dropdown no-arrow">
@@ -29,7 +33,7 @@
             </div>
         </div>
         <div class="list-group nested-sortable mt-2" style="min-height: 20px">
-            @include('layouts.tasks', ['tasks' => $task->child->where('is_archive', 0)->where('is_done', 0)->sortBy('order')])
+            @include('layouts.tasks-all', ['tasks' => $task->child->where('is_archive', 0)->sortBy('order')])
         </div>
     </div>
 @endforeach

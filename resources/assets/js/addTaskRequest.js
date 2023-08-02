@@ -11,7 +11,7 @@ document.querySelector('#taskForm').addEventListener('submit', function (event) 
 
     sendRequest('post', "/task/create", data, function (task) {
         if(task.description === null) task.description = '';
-        document.getElementById('nestedRoot').innerHTML += '<div data-sortable-id="' + task.id + '" class="list-group-item rounded-0 border-top border-bottom" id="' + task.id + '">' +
+        document.getElementById('nestedRoot').innerHTML += '<div data-sortable-id="' + task.id + '" class="list-group-item rounded-0 border" id="' + task.id + '">' +
             '<div class="taskSection">' +
             '<div class="row navbar navbar-expand p-0">' +
             '<ul class="navbar-nav mr-auto">' +

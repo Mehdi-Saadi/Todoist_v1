@@ -25,3 +25,9 @@ import '../assets/js/addTaskRequest';
 
 import {deleteTask} from "../assets/js/taskDropDown";
 window.deleteTask = deleteTask;
+
+import {showCompletedClicked} from '../assets/js/showAndHideTask';
+window.showCompletedClicked = showCompletedClicked;
+
+import {hideCompletedClicked} from '../assets/js/showAndHideTask';
+window.hideCompletedClicked = hideCompletedClicked;

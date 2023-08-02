@@ -11,7 +11,7 @@ export function serializeAndSendRequestDone(taskId) {
     // hide the selected task
     bubble.play();
     toast_alert('', 'task completed');
-    setTimeout(() => task.classList.add('d-none'),500);
+    setTimeout(() => task.remove(),500);
 
     sendRequest('put', '/tasks/done', serializeTasks(task), function () {
         console.log('done')

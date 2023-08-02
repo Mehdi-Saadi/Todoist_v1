@@ -47,5 +47,4 @@
         <button type="submit" class="btn btn-danger btn-sm float-right ml-2">Add task</button>
         <button type="button" class="btn btn-sm float-right border" onclick="hideForm('taskForm'); showBtn('addBtn')">Cancel</button>
     </div>
-
 </form>

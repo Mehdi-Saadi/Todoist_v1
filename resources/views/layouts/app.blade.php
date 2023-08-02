@@ -9,8 +9,7 @@
 
     <title>@yield('title'): Todotask</title>
 
-    @vite('resources/js/app.js')
-    @stack('script')
+    @vite(['resources/js/app.js', 'resources/js/inbox.js'])
     @livewireStyles
 </head>
 <body id="page-top">
