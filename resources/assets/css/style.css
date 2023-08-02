@@ -116,3 +116,10 @@ button.w-100:hover > i {
     transform: translate(-20%, 800%);
     display: block;
 }
+input.search {
+    background: transparent url("/assets/img/search.svg") no-repeat 5px;
+    padding: 9px 4px 9px 35px;
+}
+input[type="text"]::placeholder {
+    color: #bbbbbb;
+}

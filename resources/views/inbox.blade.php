@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.app')
 
 @section('title', 'Inbox')
 
@@ -9,13 +9,11 @@
 @section('content')
     {{-- Page Heading --}}
     <nav class="navbar navbar-expand  topbar mt-5 fixed-heading bg-light border-bottom">
-
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
                 <h1 class="h5 mb-0 text-gray-800 font-weight-bolder">Inbox</h1>
             </li>
         </ul>
-
         {{-- tools --}}
         <ul class="navbar-nav ml-auto">
 
@@ -111,16 +109,14 @@
                             Hide completed
                         </a>
                     @else
-                        <button type="button" class="dropdown-item btn btn-sm">
+                        <button type="button" class="dropdown-item btn btn-sm" wire:click="showCompleted">
                             <i class="fa-regular fa-circle-check mr-2 text-gray-700"></i>
                             Show completed
                         </button>
                     @endif
                 </div>
             </li>
-
         </ul>
-
     </nav>
     {{-- end page heading --}}
 
@@ -131,22 +127,13 @@
     {{-- show all tasks --}}
     <div style="margin-top: 8rem">
         <div id="nestedRoot" class="list-group col nested-sortable pr-0">
-
             @include('layouts.tasks', ['tasks' => $tasks, 'labels' => $labels])
-
         </div>
     </div>
-
     {{-- new task button --}}
-    <div class="justify-content-center mt-2" style="display: flex; margin-bottom: 8rem;" id="addBtn">
+    <div class="justify-content-center mt-2" style="margin-bottom: 8rem;" id="addBtn">
         <button class="w-100 d-flex justify-content-start border-0 px-2 btn" onclick="setValueAndShowForm(this, 'taskForm'); hideBtn('addBtn')" data-id="0" data-archive="0"><i class="fa-solid fa-plus mr-2 rounded-circle p-1 "></i>Add task</button>
     </div>
-
     {{-- new task form --}}
     @include('layouts.task-form')
-
-    {{-- Content Row --}}
-    {{--                    <div class="row">--}}
-
-    {{--                    </div>--}}
 @endsection

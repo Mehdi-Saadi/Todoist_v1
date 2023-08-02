@@ -43,3 +43,7 @@ import {showBtn} from '../assets/js/showFormAndSetValue';
 window.showBtn = showBtn;
 import {hideBtn} from '../assets/js/showFormAndSetValue';
 window.hideBtn = hideBtn;
+
+// search
+import {searchTask} from '../assets/js/searchTask';
+window.searchTask = searchTask;

@@ -8,7 +8,10 @@ window.onclick = function(event) {
 }
 // show the send comment form and set the value of parent id
 export function showForm(formId) {
-    document.getElementById(formId).style.display='block';
+    let form = document.getElementById(formId);
+    let nameInput = form.querySelector('input[name="name"]');
+    form.style.display='block';
+    nameInput.focus();
 }
 export function scrollToBottom() {
     window.scrollTo(0, document.body.scrollHeight);

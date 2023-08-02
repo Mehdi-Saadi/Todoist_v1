@@ -5,7 +5,7 @@
     <input type="hidden" name="color" id="color" value="">
     <div class="form-group m-0">
         <input type="text" class="form-control my-2 border-0" style="height: 30px" placeholder="Task name" name="name" required autocomplete="off">
-        <input type="text" class="form-control mb-4 border-0" style="height: 20px" placeholder="Description" name="description" autocomplete="off">
+        <input type="text" class="form-control mb-4 border-0" style="height: 25px" placeholder="Description" name="description" autocomplete="off">
         <div class="dropdown no-arrow d-inline">
             <button type="button" class="dropdown-toggle btn btn-sm border ml-2"
                     id="priorityDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

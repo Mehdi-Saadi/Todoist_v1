@@ -1,5 +1,5 @@
 @foreach($tasks as $task)
-    <div data-sortable-id="{{ $task->id }}" class="list-group-item rounded-0 border" id="{{ $task->id }}" @if($task->is_done) style="display: none" @endif>
+    <div data-sortable-id="{{ $task->id }}" class="list-group-item rounded-0 border @if($task->is_done) d-none @endif" id="{{ $task->id }}">
         <div class="taskSection">
             <div class="row navbar navbar-expand p-0">
                 <ul class="navbar-nav mr-auto">
@@ -30,7 +30,7 @@
                 </ul>
             </div>
             <div class="row">
-                <small class="ml-5 pl-3 text-gray-500">{{ $task->description }}</small>
+                <small class="ml-5 pl-2 text-gray-500">{{ $task->description }}</small>
             </div>
         </div>
         <div class="list-group nested-sortable mt-2" style="min-height: 20px">

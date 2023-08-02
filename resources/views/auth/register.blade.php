@@ -6,7 +6,7 @@
     <div class="col-lg-6">
         <div class="p-2">
             <h1 class="h2 text-gray-900 mb-5">Sign up</h1>
-            <a class="btn btn-block border" href="#">Continue with Google</a>
+            <a class="btn btn-block border" href="#">Continue with <i class="fab fa-google fa-1x"></i></a>
             <hr>
             <form class="user" method="POST" action="{{ route('register') }}">
                 @csrf
