@@ -11,3 +11,16 @@ export function serializeTasks(sortable, firstLoop = true) {
     }
     return serialized;
 }
+export function serializeTasksSetNotDone(task) {
+    let serialized = [];
+    // gets the div.nested-sortable
+    let parent = task.parentElement;
+    // gets the main parent
+    parent = parent.parentElement;
+    serialized.push({
+        id: task.dataset['sortableId'],
+        parent: parent.id !== 'grandParentTask' ? serializeTasksSetNotDone(parent) : []
+    });
+
+    return serialized;
+}

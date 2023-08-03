@@ -1,6 +1,9 @@
 // this function will serialize the selected task and it's children
 import {serializeTasks} from '../assets/js/serializeTasks';
 window.serializeTasks = serializeTasks;
+// this function will serialize the selected task and it's parents
+import {serializeTasksSetNotDone} from '../assets/js/serializeTasks';
+window.serializeTasksSetNotDone = serializeTasksSetNotDone;
 
 // set priority value on click
 import {selectPriority} from '../assets/js/selectPriority';

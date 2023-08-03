@@ -18,7 +18,6 @@ document.querySelector('#taskForm').addEventListener('submit', function (event) 
             '<li><button class="btn btn-sm shadow-none p-0 ml-4 rounded-circle d-inline-flex justify-content-center done-circle-btn">' +
             '<i class="fa-regular fa-circle fa-lg ' + task.color + '" onmouseover="showCheck(this)" onmouseleave="showCircle(this)" onclick="serializeAndSendRequestDone(' + task.id + ')"></i>' +
             '</button></li>' +
-            // '<li><button type="button" class="btn btn-sm pt-0 ml-2" onclick="sendRequest(\'post\', \'/task\', ' + task.id + ', function () {showForm(\'taskDetails\');})">' + task.name + '</button></li>' +
             '<li class="dropdown no-arrow">' +
             '<button type="button" class="dropdown-toggle btn btn-sm pt-0 ml-2" id="task-' + task.id + '" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' + task.name + '</button>' +
             '<div class="dropdown-menu dropdown-menu shadow animated--grow-in" aria-labelledby="task-' + task.id + '">' +

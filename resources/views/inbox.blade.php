@@ -114,7 +114,8 @@
 {{--    <!-- end task details -->--}}
 
     {{-- show tasks --}}
-    <div style="margin-top: 8rem">
+    {{-- the 'grandParentTask' id is for stopping the cicle of getting parents in 'doneCircleEffect.js' file --}}
+    <div style="margin-top: 8rem" id="grandParentTask">
         @livewire('layouts.tasks')
     </div>
     {{-- new task button --}}

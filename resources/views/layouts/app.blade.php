@@ -9,6 +9,8 @@
 
     <title>@yield('title'): Todotask</title>
 
+    <link rel="icon" href="{{ asset('/assets/img/icon.png') }}">
+
     @vite(['resources/js/app.js', 'resources/js/inbox.js'])
     @livewireStyles
 </head>

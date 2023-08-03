@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="Mehdi Saadi">
 
-    <title>@yield('title')</title>
+    <title>@yield('title'): Todotask</title>
+
+    <link rel="icon" href="{{ asset('/assets/img/icon.png') }}">
 
     @vite('resources/js/auth.js')
 </head>
@@ -21,7 +23,7 @@
                     <div class="row pl-1">
                         <a class="nav-link h2 text-danger" href="/">
                             <i class="fa-solid fa-layer-group mr-2"></i>
-                            Todoist
+                            Todotask
                         </a>
                     </div>
                     <div class="row">

@@ -39,6 +39,6 @@
         </div>
     </div>
     <div class="col-lg-6 d-none d-lg-block">
-        <img src="{{ asset('/assets/img/forgot-photo.png') }}" class="img-fluid mt-5 pt-3" alt="">
+        <img src="{{ asset('/assets/img/forgot-photo.png') }}" style="height: 400px; width: 400px" class="img-fluid ml-5" alt="">
     </div>
 @endsection

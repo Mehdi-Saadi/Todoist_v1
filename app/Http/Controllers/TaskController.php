@@ -123,7 +123,7 @@ class TaskController extends Controller
                 'order' => ++$number,
             ]);
             if(! empty($task['children'])) {
-                $this->setOrder(auth()->user(), $task['children'], $task['id']);
+                $this->setOrder($user, $task['children'], $task['id']);
             }
         });
     }
@@ -143,7 +143,7 @@ class TaskController extends Controller
                 'is_done' => 1,
             ]);
             if(! empty($task['children'])) {
-                $this->setDone(auth()->user(), $task['children']);
+                $this->setDone($user, $task['children']);
             }
         });
     }
@@ -162,8 +162,8 @@ class TaskController extends Controller
             $userTask->update([
                 'is_done' => 0,
             ]);
-            if(! empty($task['children'])) {
-                $this->setDone(auth()->user(), $task['children']);
+            if(! empty($task['parent'])) {
+                $this->setNotDone($user, $task['parent']);
             }
         });
     }
