@@ -23,7 +23,7 @@
                     <div class="row pl-1">
                         <a class="nav-link h2 text-danger" href="/">
                             <i class="fa-solid fa-layer-group mr-2"></i>
-                            Todotask
+                            <b>Todotask</b>
                         </a>
                     </div>
                     <div class="row">

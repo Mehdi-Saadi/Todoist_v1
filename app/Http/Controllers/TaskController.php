@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Task;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -26,7 +25,7 @@ class TaskController extends Controller
             'description' => ['max:255'],
         ]);
 
-        if($request->parent_id != 0) {
+        if($request['parent_id'] != 0) {
             $data += $request->validate([
                 'parent_id' => ['required', Rule::exists('tasks', 'id')->where('user_id', $user->id)],
             ]);
@@ -45,10 +44,10 @@ class TaskController extends Controller
         return response()->json($task);
     }
 
-    public function update(Request $request, Task $task)
-    {
-
-    }
+//    public function update(Request $request, Task $task)
+//    {
+//
+//    }
 
     public function destroy(Request $request)
     {
@@ -64,6 +63,11 @@ class TaskController extends Controller
         return 'deleted';
     }
 
+    /**
+     * sort tasks on drop
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse|string
+     */
     public function updateAll(Request $request)
     {
         // ajax request required

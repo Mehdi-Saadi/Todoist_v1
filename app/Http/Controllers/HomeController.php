@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 class HomeController extends Controller
 {
     /**
@@ -13,28 +11,28 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(['auth', 'verified']);
+        $this->middleware(['auth', 'verified'])->only(['app']);
+        $this->middleware(['guest'])->only(['index']);
     }
 
     public function index()
     {
-//        auth()->loginUsingId(1);
-        return 'logged in!';
+        return view('index');
     }
 
-    public function inbox()
+    public function app()
     {
-        return view('inbox');
+        return view('app');
     }
 
-    public function taskDetails(Request $request)
-    {
-        return $request;
-    }
+//    public function taskDetails(Request $request)
+//    {
+//        return $request;
+//    }
 
-    public function filter_label()
-    {
-        $labels = auth()->user()->labels->sortBy('order');
-        return view('labels', compact('labels'));
-    }
+//    public function filter_label()
+//    {
+//        $labels = auth()->user()->labels->sortBy('order');
+//        return view('labels', compact('labels'));
+//    }
 }

@@ -23,6 +23,9 @@
     }
 }
 @media only screen and (max-width: 575px){
+    .container {
+        padding: 0;
+    }
     .fixed-heading {
         max-width: 527px;
     }

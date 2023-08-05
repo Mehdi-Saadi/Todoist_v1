@@ -20,21 +20,14 @@ use Illuminate\Support\Facades\Route;
 Auth::routes(['verify' => true]);
 
 Route::get('/', [HomeController::class, 'index']);
-Route::get('/inbox', [HomeController::class, 'inbox'])->name('inbox');
+Route::get('/app', [HomeController::class, 'app'])->name('app');
 //Route::get('/filter_label', [HomeController::class, 'filter_label'])->name('filter_label');
-
-//Route::get('/test', function () {
-//    for($i = 1; $i != 5; $i++) {
-//        echo \auth()->user()->tasks()->findOrFail($i) . '<br>';
-//    }
-//    //    return view('sort');
-//});
 
 // task routes
 Route::prefix('task')->group(function () {
 //    Route::post('/', [HomeController::class, 'taskDetails']);
     Route::post('/create', [TaskController::class, 'create'])->name('createTask');
-    Route::put('/update/{task}', [TaskController::class, 'update'])->name('updateTask');
+//    Route::put('/update/{task}', [TaskController::class, 'update'])->name('updateTask');
     Route::delete('/destroy', [TaskController::class, 'destroy'])->name('destroyTask');
 });
 

@@ -7,7 +7,7 @@
             </button>
             {{-- Dropdown - menu --}}
             <div class="dropdown-menu dropdown-menu-left shadow animated--grow-in" aria-labelledby="menu" style="max-width: 400px; min-width: 250px">
-                <a class="dropdown-item btn btn-sm" href="{{ route('inbox') }}">
+                <a class="dropdown-item btn btn-sm" href="{{ route('app') }}">
                     <i class="fa-solid fa-inbox mr-2 text-primary"></i>
                     <span>Inbox</span>
                 </a>
