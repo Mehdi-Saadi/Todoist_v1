@@ -19,12 +19,9 @@ export function deleteTask(taskId, taskName) {
     }).then((result) => {
         if (result.isConfirmed) {
             const task = document.getElementById(taskId);
-            let data = serializeTasks(task);
             task.remove();
-
             toast_alert('', 'task removed');
-
-            sendRequest('delete', '/task/destroy', data, function () {
+            sendRequest('delete', '/task/destroy', serializeTasks(task), function () {
                 console.log('deleted');
             });
         }

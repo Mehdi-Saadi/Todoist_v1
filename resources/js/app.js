@@ -47,3 +47,23 @@ window.hideBtn = hideBtn;
 // search
 import {searchTask} from '../assets/js/searchTask';
 window.searchTask = searchTask;
+
+// autofocus the search input onclick '/'
+document.addEventListener('keydown', (e) => {
+    if(e.key === '/') {
+        e.preventDefault();
+        let searchInput = document.querySelector('input.search');
+        searchInput.focus();
+    } else if(e.key === 'Escape') {
+        e.preventDefault();
+        let searchInput = document.querySelector('input.search');
+        searchInput.value = '';
+        // set timeout for showing default tasks
+        setTimeout(() => searchInput.blur(), 100);
+    }
+});
+
+import {offlineDetect} from "../assets/js/offlineDetect.js";
+window.offlineDetect = offlineDetect;
+
+window.addEventListener('offline', () => offlineDetect());

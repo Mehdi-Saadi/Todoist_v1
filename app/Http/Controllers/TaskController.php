@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
 class TaskController extends Controller
 {
-    public function create(Request $request)
+    public function create(Request $request): JsonResponse
     {
         // ajax request required
         if(! $request->ajax()) {
@@ -49,7 +50,7 @@ class TaskController extends Controller
 //
 //    }
 
-    public function destroy(Request $request)
+    public function destroy(Request $request): JsonResponse|string
     {
         // ajax request required
         if(! $request->ajax()) {
@@ -66,9 +67,9 @@ class TaskController extends Controller
     /**
      * sort tasks on drop
      * @param Request $request
-     * @return \Illuminate\Http\JsonResponse|string
+     * @return JsonResponse|string
      */
-    public function updateAll(Request $request)
+    public function updateAll(Request $request): JsonResponse|string
     {
         // ajax request required
         if(! $request->ajax()) {
@@ -82,7 +83,7 @@ class TaskController extends Controller
         return 'serialized';
     }
 
-    public function setTaskDone(Request $request)
+    public function setTaskDone(Request $request): JsonResponse|string
     {
         // ajax request required
         if(! $request->ajax()) {
@@ -96,7 +97,7 @@ class TaskController extends Controller
         return 'done';
     }
 
-    public function setTaskNotDone(Request $request)
+    public function setTaskNotDone(Request $request): JsonResponse|string
     {
         // ajax request required
         if(! $request->ajax()) {
@@ -190,3 +191,5 @@ class TaskController extends Controller
         });
     }
 }
+
+// todo if user changes the 'task id' and did an action in 'delete', 'set done', 'set not done' and 'set order'; must not occure an error...

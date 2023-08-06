@@ -1,5 +1,5 @@
 // this variable helps on 'doneCircleEffect.js' file to use on its functions
-// shows if user clicked on show completed button (if it's in show completed section task must not disapeard on click
+// shows if user clicked on 'show completed' button (if it's in 'show completed' section, not done tasks must not disapeard on click
 export let showCompletedSection = false;
 export function showCompletedClicked(button) {
     Livewire.emit('showCompleted');

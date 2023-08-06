@@ -24,7 +24,7 @@
     </ul>
 
     {{-- Topbar Search --}}
-    <input type="text" onkeyup="searchTask(this)" class="d-none d-sm-inline-block ml-3 form-control bg-transparent small search" style="max-width: 200px;max-height: 30px" placeholder="Search..." autocomplete="off">
+    <input type="text" onkeyup="searchTask(this)" class="d-none d-sm-inline-block ml-3 form-control bg-transparent small search" style="max-width: 200px;max-height: 30px" placeholder="Search...                    /" autocomplete="off">
 
     {{-- Topbar Navbar --}}
     <ul class="navbar-nav ml-auto">
