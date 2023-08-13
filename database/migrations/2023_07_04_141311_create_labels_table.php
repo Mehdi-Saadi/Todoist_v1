@@ -17,7 +17,10 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('name');
             $table->string('color');
-            $table->integer('order');
+            $table->foreign('color')->references('color_code')->on('colors')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->unsignedBigInteger('order')->default(0);
+            $table->boolean('is_favorite')->default(0);
+            $table->timestamps();
         });
     }
 

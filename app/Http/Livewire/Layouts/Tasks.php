@@ -9,11 +9,10 @@ class Tasks extends Component
     public $user;
     public $tasks;
     public $labels;
-    public $showAllTasks = false;
-
+    public bool $showAllTasks = false;
     protected $listeners = [
-        'showCompleted' => 'showCompleted',
-        'hideCompleted' => 'hideCompleted'
+        'showCompleted',
+        'hideCompleted'
     ];
 
     /**
@@ -24,7 +23,7 @@ class Tasks extends Component
     public function mount()
     {
         $this->user = auth()->user();
-        $this->tasks = $this->user->tasks->where('is_archive', 0)->where('parent_id', 0)->where('is_done', 0)->sortBy('order');
+        $this->tasks = $this->user->tasks->where('parent_id', 0)->where('is_done', 0)->sortBy('order');
         $this->labels = $this->user->labels;
     }
 
@@ -34,16 +33,16 @@ class Tasks extends Component
      */
     public function showCompleted()
     {
-        $this->tasks = $this->user->tasks->where('is_archive', 0)->where('parent_id', 0)->sortBy('order');
+        $this->tasks = $this->user->tasks->where('parent_id', 0)->sortBy('order');
         $this->showAllTasks = true;
-        $this->emit('showCompletedDone');
+        $this->dispatchBrowserEvent('showCompletedDone');
     }
 
     public function hideCompleted()
     {
-        $this->tasks = $this->user->tasks->where('is_archive', 0)->where('parent_id', 0)->where('is_done', 0)->sortBy('order');
+        $this->tasks = $this->user->tasks->where('parent_id', 0)->where('is_done', 0)->sortBy('order');
         $this->showAllTasks = false;
-        $this->emit('hideCompletedDone');
+        $this->dispatchBrowserEvent('hideCompletedDone');
     }
 
     public function render()

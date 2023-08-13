@@ -11,21 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tasks', function (Blueprint $table) {
+        Schema::create('archives', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('name');
-            $table->string('description')->nullable();
             $table->unsignedBigInteger('parent_id')->default(0);
-            $table->text('label')->nullable();
-            $table->boolean('is_done')->default(0);
-            $table->unsignedBigInteger('archive_id');
-            $table->foreign('archive_id')->references('id')->on('archives')->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('color');
             $table->foreign('color')->references('color_code')->on('colors')->cascadeOnUpdate()->cascadeOnDelete();
             $table->unsignedBigInteger('order')->default(0);
-            $table->dateTime('deadline')->nullable();
+            $table->boolean('is_favorite')->default(0);
             $table->timestamps();
         });
     }
@@ -35,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tasks');
+        Schema::dropIfExists('archives');
     }
 };

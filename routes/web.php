@@ -27,7 +27,7 @@ Route::get('/app', [HomeController::class, 'app'])->name('app');
 Route::prefix('task')->group(function () {
 //    Route::post('/', [HomeController::class, 'taskDetails']);
     Route::post('/create', [TaskController::class, 'create'])->name('createTask');
-//    Route::put('/update/{task}', [TaskController::class, 'update'])->name('updateTask');
+    Route::put('/color/update', [TaskController::class, 'colorUpdate'])->name('updateTask');
     Route::delete('/destroy', [TaskController::class, 'destroy'])->name('destroyTask');
 });
 

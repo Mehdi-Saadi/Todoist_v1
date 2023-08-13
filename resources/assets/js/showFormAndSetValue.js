@@ -13,9 +13,6 @@ export function showForm(formId) {
     form.style.display='block';
     nameInput.focus();
 }
-export function scrollToBottom() {
-    window.scrollTo(0, document.body.scrollHeight);
-}
 export function hideForm(formId) {
     document.getElementById(formId).style.display='none';
 }
@@ -27,11 +24,20 @@ export function setValueAndShowForm(button, formId) {
     parent_id.value = $(button).data('id'); // set the parent id of given name
     is_archive.value = $(button).data('archive'); // set is_archive 1 if user is adding archive
     showForm(formId);
-    scrollToBottom();
 }
 export function showBtn(buttonId) {
     document.getElementById(buttonId).style.display='flex';
 }
 export function hideBtn(buttonId) {
     document.getElementById(buttonId).style.display='none';
+}
+export function disableAddTaskBtn(nameInput, addTaskBtnId) {
+    let submitBtn = document.getElementById(addTaskBtnId);
+    if(nameInput.value === '') {
+        submitBtn.setAttribute('disabled', 'true');
+        submitBtn.setAttribute('type', 'button');
+    } else {
+        submitBtn.removeAttribute('disabled');
+        submitBtn.setAttribute('type', 'submit');
+    }
 }

@@ -22,7 +22,9 @@ class HomeController extends Controller
 
     public function app()
     {
-        return view('app');
+        // get the first user's archive (inbox)
+        $archive_id = auth()->user()->archives()->pluck('id')->first();
+        return view('app', compact('archive_id'));
     }
 
 //    public function taskDetails(Request $request)

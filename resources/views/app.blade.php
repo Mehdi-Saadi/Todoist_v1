@@ -118,10 +118,13 @@
     <div style="margin-top: 8rem" id="grandParentTask">
         @livewire('layouts.tasks')
     </div>
+    {{-- show task details --}}
+    @livewire('layouts.show-task-details', ['archive_id' => $archive_id])
     {{-- new task button --}}
     <div class="justify-content-center mt-2" style="margin-bottom: 8rem;" id="addBtn">
-        <button class="w-100 d-flex justify-content-start border-0 px-2 btn" onclick="setValueAndShowForm(this, 'taskForm'); hideBtn('addBtn')" data-id="0" data-archive="0"><i class="fa-solid fa-plus mr-2 rounded-circle p-1"></i>Add task</button>
+        <button class="w-100 d-flex justify-content-start border-0 px-2 btn" onclick="showForm('taskForm');hideBtn('addBtn')"><i class="fa-solid fa-plus mr-2 rounded-circle p-1"></i>Add task</button>
     </div>
     {{-- new task form --}}
-    @include('layouts.task-form')
+    {{-- identity variable is for helping to detect the ids in 'addTaskRequest.js' file --}}
+    @include('layouts.task-form', ['task_form_id' => 'taskForm', 'add_btn_id' => 'addBtn', 'id' => 0, 'identity' => 'main', 'archive_id' => $archive_id])
 @endsection

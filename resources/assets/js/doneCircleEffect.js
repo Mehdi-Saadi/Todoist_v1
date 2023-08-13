@@ -1,5 +1,5 @@
 import {showCompletedSection} from "./showAndHideTask.js";
-import {serializeTasksSetNotDone} from "./serializeTasks.js";
+import {serializeTaskWithParents} from "./serializeTasks.js";
 export function showCheck(item) {
     item.classList.replace('fa-circle', 'fa-circle-check');
 }
@@ -41,9 +41,9 @@ export function serializeAndSendRequestDone(taskId) {
 export function serializeAndSendRequestNotDone(taskId) {
     const task = document.getElementById(taskId);
 
-    sendRequest('put', '/tasks/notDone', serializeTasksSetNotDone(task), function () {});
+    sendRequest('put', '/tasks/notDone', serializeTaskWithParents(task), function () {});
 
-    // will set the 'done circle' checked for selected task and its children
+    // will set the 'done circle' not checked for selected task and its parents
     function setNotDone(task) {
         const taskID = task.id;
         const doneCircle = task.querySelector('div.taskSection > div.navbar > ul.mr-auto > li > button.shadow-none > i');
@@ -52,12 +52,12 @@ export function serializeAndSendRequestNotDone(taskId) {
         doneCircle.setAttribute('onmouseleave', 'showCircle(this)');
         doneCircle.setAttribute("onclick", "serializeAndSendRequestDone(" + taskID + ")");
         // gets the div.nested-sortable
-        let grandParent = task.parentElement;
+        let parent = task.parentElement;
         // gets the main parent
-        grandParent = grandParent.parentElement;
+        parent = parent.parentElement;
 
-        if(grandParent.id !== 'grandParentTask') {
-            setNotDone(grandParent);
+        if(parent.id !== 'grandParentTask') {
+            setNotDone(parent);
         }
     }
     setNotDone(task);
@@ -74,4 +74,54 @@ export function serializeAndSendRequestNotDone(taskId) {
     // }
     //
     // computeCountOfTasks(data);
+}
+export function serializeAndSendRequestDoneTaskDetail(taskId) {
+    serializeAndSendRequestDone(taskId);
+    const task = document.getElementById('task-detail-' + taskId);
+    // will set the 'done circle' checked for selected task and its children
+    function setDone(task, firstLoop = true, parentId = '') {
+        let children = (firstLoop === true) ? [task] : [].slice.call(task.children);
+        for (let i in children) {
+            const taskID = children[i].id.replace(/^\D+/g, '');
+            parentId = (firstLoop === true) ? taskID : parentId;
+            const doneCircle = children[i].querySelector('div.taskSection > div.navbar > ul.mr-auto > li > button.shadow-none > i');
+            doneCircle.classList.replace('fa-circle', 'fa-circle-check');
+            doneCircle.setAttribute('onmouseover', 'showCircle(this)');
+            doneCircle.setAttribute('onmouseleave', 'showCheck(this)');
+            doneCircle.setAttribute("onclick", "serializeAndSendRequestNotDoneTaskDetail(" + taskID + ", " + parentId + ")");
+            let nested = children[i].querySelector('.nested-sortable');
+            if(nested) {
+                setDone(nested, false, parentId);
+            }
+        }
+    }
+    setDone(task);
+}
+export function serializeAndSendRequestNotDoneTaskDetail(taskId, parentId) {
+    serializeAndSendRequestNotDone(taskId);
+    const task = document.getElementById('task-detail-' + taskId);
+    // will set the 'done circle' not checked for selected task and its parents
+    function setNotDone(task, parentId, lastLoop = false) {
+        const taskId = task.id.replace(/^\D+/g, '');
+        const doneCircle = task.querySelector('div.taskSection > div.navbar > ul.mr-auto > li > button.shadow-none > i');
+        doneCircle.classList.replace('fa-circle-check', 'fa-circle');
+        doneCircle.setAttribute('onmouseover', 'showCheck(this)');
+        doneCircle.setAttribute('onmouseleave', 'showCircle(this)');
+        doneCircle.setAttribute("onclick", "serializeAndSendRequestDoneTaskDetail(" + taskId + ")");
+
+        if(!lastLoop) {
+            // gets the div.nested-sortable
+            let parent = task.parentElement;
+            // gets the main parent
+            parent = parent.parentElement;
+
+            if(parent.id !== 'task-detail-' + parentId) {
+                setNotDone(parent, taskId, parentId);
+            } else {
+                // one more loop through tasks for get last task itself
+                setNotDone(parent, parentId, true);
+            }
+        }
+    }
+    setNotDone(task, parentId);
 }

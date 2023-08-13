@@ -33,48 +33,48 @@
 /* task button styles */
 button.w-100 > i {
     color: #d9534f;
-    width: 18px;
-    height: 18px;
-    transform: translate(0, 20%);
-}
-button.w-100 > i:before {
-    position: relative;
-    top: 50%;
-    transform: translate(-20%, -50%);
-    display: block;
 }
 button.w-100:hover {
     color: #d9534f;
-}
-button.w-100:hover > i {
-    background: #d9534f;
-    color: #fff;
 }
 /* end task button styles */
 
 /* task form styles */
 /* The Modal (background) */
-.modal {
-    display: none; /* Hidden by default */
+.task-detail-modal {
     position: fixed; /* Stay in place */
     z-index: 1040; /* Sit on top */
     left: 0;
     top: 0;
-    max-width: 100%; /* Full width */
+    width: 100%; /* Full width */
     height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
     padding-top: 2rem;
     padding-bottom: 2rem;
 }
 /* Modal Content/Box */
-.modal-content {
+.task-detail-modal-content {
     height: 100%;
     background-color: #fefefe;
-    margin: 0 auto; /* 5% from the top, 15% from the bottom and centered */
-    border: 1px solid #adadad;
-    max-width: 900px; /* Could be more or less, depending on screen size */
+    margin: 0 auto;
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+}
+@media only screen and (max-width: 950px) {
+    .task-detail-modal-content {
+        max-width: 700px;
+    }
+}
+@media only screen and (max-width: 750px) {
+    .task-detail-modal-content {
+        max-width: 580px;
+    }
+}
+@media only screen and (max-width: 550px) {
+    .task-detail-modal {
+        padding-bottom: 0;
+    }
 }
 .form {
     display: none;
@@ -86,11 +86,11 @@ button.w-100:hover > i {
     animation: animatezoom 0.6s
 }
 @-webkit-keyframes animatezoom {
-    from {-webkit-transform: scale(.9)}
+    from {-webkit-transform: scale(.95)}
     to {-webkit-transform: scale(1)}
 }
 @keyframes animatezoom {
-    from {transform: scale(.9)}
+    from {transform: scale(.95)}
     to {transform: scale(1)}
 }
 /* end task form styles */

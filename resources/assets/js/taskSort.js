@@ -1,10 +1,11 @@
+export let sortableItems = [];
 export function taskSort() {
     // Nested
     let nestedSortables = [].slice.call(document.querySelectorAll('.nested-sortable'));
 
-// Loop through each nested sortable element
+    // Loop through each nested sortable element
     for (let i = 0; i < nestedSortables.length; i++) {
-        new Sortable(nestedSortables[i], {
+        sortableItems[i] = new Sortable(nestedSortables[i], {
             group: 'nested',
             handle: '.fa-arrows-up-down-left-right',
             animation: 150,
@@ -20,19 +21,25 @@ export function taskSort() {
                     for (let i in children) {
                         let nested = children[i].querySelector('.nested-sortable');
                         serialized.push({
-                            id: children[i].dataset['sortableId'],
+                            id: children[i].id,
                             children: nested ? serialize(nested) : []
                         });
                     }
                     return serialized;
                 }
 
+                toast_alert('', 'Order changed');
                 // serialize and send tasks with ajax to server
-                sendRequest('put', '/tasks/update', serialize(root), function () {
-                    toast_alert('', 'Order changed');
-                });
+                sendRequest('put', '/tasks/update', serialize(root), function () {});
             }
         });
     }
 }
 taskSort();
+export function taskResort() {
+    sortableItems.forEach((sortableItem) => {
+        sortableItem.destroy();
+    });
+    sortableItems = [];
+    taskSort();
+}

@@ -5,21 +5,21 @@ export function serializeTasks(sortable, firstLoop = true) {
     for (let i in children) {
         let nested = children[i].querySelector('.nested-sortable');
         serialized.push({
-            id: children[i].dataset['sortableId'],
+            id: children[i].id,
             children: nested ? serializeTasks(nested, false) : []
         });
     }
     return serialized;
 }
-export function serializeTasksSetNotDone(task) {
+export function serializeTaskWithParents(task) {
     let serialized = [];
     // gets the div.nested-sortable
     let parent = task.parentElement;
     // gets the main parent
     parent = parent.parentElement;
     serialized.push({
-        id: task.dataset['sortableId'],
-        parent: parent.id !== 'grandParentTask' ? serializeTasksSetNotDone(parent) : []
+        id: task.id,
+        parent: parent.id !== 'grandParentTask' ? serializeTaskWithParents(parent) : []
     });
 
     return serialized;

@@ -20,15 +20,15 @@ class TaskController extends Controller
         $user = auth()->user();
 
         $data = $request->validate([
-            'is_archive' => ['required', Rule::in(['0', '1'])],
-            'color' => [Rule::in(['text-danger', 'text-warning', 'text-primary', ''])],
+            'archive_id' => [Rule::exists('archives', 'id')->where('user_id', $user->id)],
+            'color' => [Rule::in(['#db4035', '#fad000', '#4073ff', '#808080'])],
             'name' => ['required'],
             'description' => ['max:255'],
         ]);
 
         if($request['parent_id'] != 0) {
             $data += $request->validate([
-                'parent_id' => ['required', Rule::exists('tasks', 'id')->where('user_id', $user->id)],
+                'parent_id' => [Rule::exists('tasks', 'id')->where('user_id', $user->id)],
             ]);
         } else {
             $data += $request->validate([
@@ -37,7 +37,7 @@ class TaskController extends Controller
         }
 
         // add the submited task at end of list for first time
-        $data['order'] = $user->tasks()->where('is_archive', 0)->where('parent_id', 0)->max('order');
+        $data['order'] = $user->tasks()->where('parent_id', $request['parent_id'])->max('order');
         ++$data['order'];
 
         $task = $user->tasks()->create($data);
@@ -45,10 +45,29 @@ class TaskController extends Controller
         return response()->json($task);
     }
 
-//    public function update(Request $request, Task $task)
-//    {
-//
-//    }
+    public function colorUpdate(Request $request): JsonResponse|string
+    {
+        // ajax request required
+        if(! $request->ajax()) {
+            return response()->json([
+                'status' => 'ajax required',
+            ]);
+        }
+
+        $user = auth()->user();
+
+        $data = $request->validate([
+            'id' => [Rule::exists('tasks', 'id')->where('user_id', $user->id)],
+            'color' => [Rule::in(['#db4035', '#fad000', '#4073ff', '#808080'])],
+        ]);
+
+        $task = $user->tasks()->find($data['id']);
+        $task->update([
+            'color' => $data['color']
+        ]);
+
+        return 'updated';
+    }
 
     public function destroy(Request $request): JsonResponse|string
     {

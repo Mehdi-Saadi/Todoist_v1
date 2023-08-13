@@ -33,8 +33,6 @@ window.toast_alert = toast_alert;
 // show form scripts
 import {showForm} from '../assets/js/showFormAndSetValue';
 window.showForm = showForm;
-import {scrollToBottom} from '../assets/js/showFormAndSetValue';
-window.scrollToBottom = scrollToBottom;
 import {hideForm} from '../assets/js/showFormAndSetValue';
 window.hideForm = hideForm;
 import {setValueAndShowForm} from '../assets/js/showFormAndSetValue';
@@ -43,6 +41,8 @@ import {showBtn} from '../assets/js/showFormAndSetValue';
 window.showBtn = showBtn;
 import {hideBtn} from '../assets/js/showFormAndSetValue';
 window.hideBtn = hideBtn;
+import {disableAddTaskBtn} from '../assets/js/showFormAndSetValue';
+window.disableAddTaskBtn = disableAddTaskBtn;
 
 // search
 import {searchTask} from '../assets/js/searchTask';
@@ -51,8 +51,10 @@ window.searchTask = searchTask;
 // autofocus the search input onclick '/'
 document.addEventListener('keydown', (e) => {
     if(e.key === '/') {
-        e.preventDefault();
         let searchInput = document.querySelector('input.search');
+        if (searchInput !== document.activeElement) {
+            e.preventDefault();
+        }
         searchInput.focus();
     } else if(e.key === 'Escape') {
         e.preventDefault();
@@ -67,3 +69,4 @@ import {offlineDetect} from "../assets/js/offlineDetect.js";
 window.offlineDetect = offlineDetect;
 
 window.addEventListener('offline', () => offlineDetect());
+window.addEventListener('online', () => toast_alert('success', 'Back online'));

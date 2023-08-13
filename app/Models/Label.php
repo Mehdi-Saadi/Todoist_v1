@@ -15,9 +15,8 @@ class Label extends Model
         'name',
         'color',
         'order',
+        'is_favorite'
     ];
-
-    public $timestamps = false;
 
     public function user(): BelongsTo
     {
