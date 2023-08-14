@@ -114,7 +114,7 @@
     {{-- end of Page Heading --}}
 
     {{-- show tasks --}}
-    {{-- the 'grandParentTask' id is for stopping the cicle of getting parents in 'doneCircleEffect.js' file --}}
+    {{-- the 'grandParentTask' id is for stopping the loop of getting parents in 'doneCircleEffect.js' file --}}
     <div style="margin-top: 8rem" id="grandParentTask">
         @livewire('layouts.tasks')
     </div>

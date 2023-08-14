@@ -41,7 +41,7 @@
                 </div>
                 {{-- end header of modal --}}
                 {{-- selected task and its children --}}
-                <div class="row m-0 h-100 overflow-auto">
+                <div class="row m-0 h-100 overflow-auto" id="grandParentTaskDetail">
                     <div class="col-md-9 overflow-y-auto">
                         {{-- parent task --}}
                         <div class="list-group-item rounded-0 border mt-3" id="task-detail-{{ $task->id }}">

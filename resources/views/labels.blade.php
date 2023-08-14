@@ -7,7 +7,7 @@
 @endpush
 
 @section('content')
-    <!-- Page Heading -->
+    {{-- Page Heading --}}
     <nav class="navbar navbar-expand  topbar mt-5 fixed-heading bg-light border-bottom">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
@@ -20,20 +20,18 @@
             </li>
         </ul>
     </nav>
-    <!-- end page heading -->
+    {{-- end page heading --}}
 
-    <!-- new label form -->
+    {{-- new label form --}}
     @include('layouts.label-form')
 
     {{-- show all labels --}}
-    <div style="margin-top: 8rem" id="labels" class="list-group col">
-
+    <div style="margin-top: 8rem" id="labels" class="list-group col pr-0">
         @foreach($labels as $label)
-            <div class="list-group-item" id="{{ $label->id }}">
-                <i class="fa-solid fa-tag mr-3" style="color:{{ $label->color }} !important;"></i>{{ $label->name }}
+            <div class="list-group-item" style="cursor: pointer" id="{{ $label->id }}">
+                <i class="fa-solid fa-tag mr-3" style="color: {{ $label->color }} !important;"></i>{{ $label->name }}
             </div>
         @endforeach
-
     </div>
     {{-- end show all labels --}}
 @endsection
