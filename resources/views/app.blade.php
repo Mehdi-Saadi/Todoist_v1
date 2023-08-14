@@ -2,6 +2,10 @@
 
 @section('title', 'App')
 
+@push('script')
+    @vite('resources/js/inbox.js')
+@endpush
+
 @section('content')
     {{-- Page Heading --}}
     <nav class="navbar navbar-expand  topbar mt-5 fixed-heading bg-light border-bottom">
@@ -109,22 +113,18 @@
     </nav>
     {{-- end of Page Heading --}}
 
-    {{--    <!-- task details -->--}}
-{{--    @include('layouts.task-details')--}}
-{{--    <!-- end task details -->--}}
-
     {{-- show tasks --}}
     {{-- the 'grandParentTask' id is for stopping the cicle of getting parents in 'doneCircleEffect.js' file --}}
     <div style="margin-top: 8rem" id="grandParentTask">
         @livewire('layouts.tasks')
     </div>
     {{-- show task details --}}
-    @livewire('layouts.show-task-details', ['archive_id' => $archive_id])
+    @livewire('layouts.show-task-details', ['archive_id' => $archive_id, 'labels' => $labels])
     {{-- new task button --}}
     <div class="justify-content-center mt-2" style="margin-bottom: 8rem;" id="addBtn">
-        <button class="w-100 d-flex justify-content-start border-0 px-2 btn" onclick="showForm('taskForm');hideBtn('addBtn')"><i class="fa-solid fa-plus mr-2 rounded-circle p-1"></i>Add task</button>
+        <button class="w-100 d-flex justify-content-start border-0 px-2 btn on-hover-red" onclick="showForm('taskForm');hideBtn('addBtn')"><i class="fa-solid fa-plus mr-2 rounded-circle p-1"></i>Add task</button>
     </div>
     {{-- new task form --}}
     {{-- identity variable is for helping to detect the ids in 'addTaskRequest.js' file --}}
-    @include('layouts.task-form', ['task_form_id' => 'taskForm', 'add_btn_id' => 'addBtn', 'id' => 0, 'identity' => 'main', 'archive_id' => $archive_id])
+    @include('layouts.task-form', ['task_form_id' => 'taskForm', 'add_btn_id' => 'addBtn', 'id' => 0, 'identity' => 'main'])
 @endsection

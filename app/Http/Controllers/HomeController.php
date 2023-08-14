@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Color;
+
 class HomeController extends Controller
 {
     /**
@@ -22,19 +24,17 @@ class HomeController extends Controller
 
     public function app()
     {
+        $user = auth()->user();
+        $labels = $user->labels->sortBy('order');
         // get the first user's archive (inbox)
-        $archive_id = auth()->user()->archives()->pluck('id')->first();
-        return view('app', compact('archive_id'));
+        $archive_id = $user->archives()->pluck('id')->first();
+        return view('app', compact(['archive_id', 'labels']));
     }
 
-//    public function taskDetails(Request $request)
-//    {
-//        return $request;
-//    }
-
-//    public function filter_label()
-//    {
-//        $labels = auth()->user()->labels->sortBy('order');
-//        return view('labels', compact('labels'));
-//    }
+    public function labels()
+    {
+        $colors = Color::all();
+        $labels = auth()->user()->labels->sortBy('order');
+        return view('labels', compact(['labels', 'colors']));
+    }
 }

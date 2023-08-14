@@ -11,7 +11,8 @@
 
     <link rel="icon" href="{{ asset('/assets/img/icon.png') }}">
 
-    @vite(['resources/js/app.js', 'resources/js/inbox.js'])
+    @vite('resources/js/app.js')
+    @stack('script')
     @livewireStyles
 </head>
 <body id="page-top">

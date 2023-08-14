@@ -35,6 +35,9 @@ export function submitTask(taskFormId, parentId, archiveId, colorId, priorityDro
     document.querySelector('#'+taskFormId).addEventListener('submit', function (event) {
         event.preventDefault();
         let target = event.target;
+        if (target.querySelector('#'+archiveId).value === '' || target.querySelector('#'+parentId).value === '' || target.querySelector('#'+colorId).value === '' || target.querySelector('input[name="name"]').value === '') {
+            return
+        }
         let data = {
             archive_id: target.querySelector('#'+archiveId).value,
             parent_id: target.querySelector('#'+parentId).value,

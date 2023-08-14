@@ -1,8 +1,8 @@
 <div>
     @if($showTaskDetail)
         {{-- task detail modal --}}
-        <div class="task-detail-modal modal d-block">
-            <div class="task-detail-modal-content border rounded animate">
+        <div class="custom-modal modal d-block">
+            <div class="custom-modal-content border rounded animate h-100" style="max-width: 900px;">
                 {{-- header of modal --}}
                 <div class="border-bottom">
                     <div class="row m-2 d-flex justify-content-between">
@@ -33,7 +33,7 @@
                                     </button>
                                 </div>
                             </div>
-                            <button type="button" class="btn btn-sm" onclick="document.querySelector('div.task-detail-modal.d-block').classList.replace('d-block', 'd-none')">
+                            <button type="button" class="btn btn-sm" onclick="document.querySelector('div.custom-modal.d-block').classList.replace('d-block', 'd-none')">
                                 <i class="fa-solid fa-close"></i>
                             </button>
                         </div>
@@ -68,7 +68,7 @@
                             </div>
                             <div class="list-group nested-sortable mt-2" style="min-height: 20px">
                                 {{-- children tasks --}}
-                                @foreach($task->child as $child)
+                                @foreach($task->child->sortBy('order') as $child)
                                     <div class="list-group-item rounded-0 border" id="task-detail-{{ $child->id }}">
                                         <div class="taskSection">
                                             <div class="row navbar navbar-expand p-0">
@@ -104,7 +104,7 @@
                         {{-- end parent task --}}
                         {{-- sub task button --}}
                         <div class="justify-content-center mt-2" style="margin-bottom: 8rem;" id="subBtn">
-                            <button class="w-100 d-flex justify-content-start border-0 px-2 btn" onclick="showForm('taskFormSub');hideBtn('subBtn')"><i class="fa-solid fa-plus mr-2 p-1"></i>Add sub-task</button>
+                            <button class="w-100 on-hover-red d-flex justify-content-start border-0 px-2 btn" onclick="showForm('taskFormSub');hideBtn('subBtn')"><i class="fa-solid fa-plus mr-2 p-1"></i>Add sub-task</button>
                         </div>
                         {{-- sub task form --}}
                         {{-- identity variable is for helping to detect the ids in 'addTaskRequest.js' file --}}
@@ -179,7 +179,7 @@
             <script>
                 submitTask('taskFormSub', 'parent_id-task-detail', 'archive_id-task-detail', 'color-task-detail', 'priorityDropDown-task-detail');
                 // Get the modal
-                const taskDetailModal = document.querySelector('div.task-detail-modal.d-block');
+                const taskDetailModal = document.querySelector('div.custom-modal.d-block');
                 // When the user clicks anywhere outside the modal or close button, close it
                 window.onclick = function(event) {if(event.target === taskDetailModal) {taskDetailModal.classList.replace('d-block', 'd-none')}}
             </script>

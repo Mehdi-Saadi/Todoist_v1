@@ -9,6 +9,7 @@ export default defineConfig({
                 'resources/js/app.js',
                 'resources/js/index.js',
                 'resources/js/inbox.js',
+                'resources/js/labels.js',
                 'resources/js/auth.js',
             ],
             refresh: true,

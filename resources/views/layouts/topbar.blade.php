@@ -11,6 +11,10 @@
                     <i class="fa-solid fa-inbox mr-2 text-primary"></i>
                     <span>Inbox</span>
                 </a>
+                <a class="dropdown-item btn btn-sm" href="{{ route('labels') }}">
+                    <i class="fa-solid fa-table-cells-large mr-2 text-warning"></i>
+                    <span>Labels</span>
+                </a>
 {{--                <a class="dropdown-item btn btn-sm" href="{{ route('filter_label') }}">--}}
 {{--                    <i class="fa-solid fa-table-cells-large mr-2 text-warning"></i>--}}
 {{--                    <span>Filters & Labels</span>--}}

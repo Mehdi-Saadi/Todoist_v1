@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
-//use App\Http\Controllers\LabelController;
+use App\Http\Controllers\LabelController;
 use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -21,11 +21,10 @@ Auth::routes(['verify' => true]);
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/app', [HomeController::class, 'app'])->name('app');
-//Route::get('/filter_label', [HomeController::class, 'filter_label'])->name('filter_label');
+Route::get('/labels', [HomeController::class, 'labels'])->name('labels');
 
 // task routes
 Route::prefix('task')->group(function () {
-//    Route::post('/', [HomeController::class, 'taskDetails']);
     Route::post('/create', [TaskController::class, 'create'])->name('createTask');
     Route::put('/color/update', [TaskController::class, 'colorUpdate'])->name('updateTask');
     Route::delete('/destroy', [TaskController::class, 'destroy'])->name('destroyTask');
@@ -41,10 +40,10 @@ Route::prefix('tasks')->group(function () {
 });
 
 // label routes
-//Route::prefix('label')->group(function () {
-//    Route::post('/create', [TaskController::class, 'create'])->name('createLabel');
+Route::prefix('label')->group(function () {
+    Route::post('/create', [LabelController::class, 'create'])->name('createLabel');
 //    Route::put('/update/{task}', [TaskController::class, 'update'])->name('updateLabel');
 //    Route::delete('/destroy/{task}', [TaskController::class, 'destroy'])->name('destroyLabel');
-//});
+});
 
-//Route::put('/labels/update', [LabelController::class, 'updateAll']);
+Route::put('/labels/update', [LabelController::class, 'updateAll']);

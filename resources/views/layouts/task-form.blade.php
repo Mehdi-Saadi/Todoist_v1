@@ -1,10 +1,10 @@
-<form class="px-4 py-3 form border bg-white" action="{{ route('createTask') }}" method="post" style="min-height: 230px;" id="{{ $task_form_id }}">
+<form class="px-4 py-3 form border bg-white" action="" method="post" style="min-height: 230px;" id="{{ $task_form_id }}">
     @csrf
     <input type="hidden" name="archive_id" id="archive_id-{{ $identity }}" value="{{ $archive_id }}">
     <input type="hidden" name="parent_id" id="parent_id-{{ $identity }}" value="{{ $id }}">
     <input type="hidden" name="color" id="color-{{ $identity }}" value="#808080">
     <div class="form-group m-0">
-        <input onkeyup="disableAddTaskBtn(this, 'addTaskBtn-{{ $identity }}')" type="text" class="form-control my-2 border-0" style="height: 30px" placeholder="Task name" name="name" required autocomplete="off">
+        <input onkeyup="disableBtn(this, 'addTaskBtn-{{ $identity }}')" type="text" class="form-control my-2 border-0" style="height: 30px" placeholder="Task name" name="name" autocomplete="off">
         <input type="text" class="form-control mb-2 border-0" style="height: 25px" placeholder="Description" name="description" autocomplete="off">
         <div class="dropdown no-arrow d-inline">
             <button type="button" class="dropdown-toggle btn btn-sm border ml-2"
@@ -27,20 +27,20 @@
                 </button>
             </div>
         </div>
-{{--        <div class="dropdown no-arrow d-inline">--}}
-{{--            <button type="button" class="dropdown-toggle btn btn-sm border ml-2"--}}
-{{--                    id="labelDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
-{{--                <i class="fa-solid fa-tags mr-1"></i>Labels--}}
-{{--            </button>--}}
-{{--            <!-- Dropdown - labels -->--}}
-{{--            <div class="dropdown-menu shadow" aria-labelledby="labelDropDown">--}}
-{{--                @foreach($labels as $label)--}}
-{{--                    <button type="button" class="dropdown-item btn btn-sm" onclick="setColor(1)">--}}
-{{--                        <i class="fa-solid fa-tag mr-1 {{ $label->color }}"></i>{{ $label->name }}--}}
-{{--                    </button>--}}
-{{--                @endforeach--}}
-{{--            </div>--}}
-{{--        </div>--}}
+        <div class="dropdown no-arrow d-inline">
+            <button type="button" class="dropdown-toggle btn btn-sm border ml-2"
+                    id="labelDropDown-{{ $identity }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa-solid fa-tags mr-1"></i>Labels
+            </button>
+            {{-- Dropdown - labels --}}
+            <div class="dropdown-menu shadow" aria-labelledby="labelDropDown-{{ $identity }}">
+                @foreach($labels as $label)
+                    <button type="button" class="dropdown-item btn btn-sm" onclick="setColor(1)">
+                        <i class="fa-solid fa-tag mr-1" style="color: {{ $label->color }} !important;"></i>{{ $label->name }}
+                    </button>
+                @endforeach
+            </div>
+        </div>
     </div>
     <hr>
     <div class="form-group mb-0">

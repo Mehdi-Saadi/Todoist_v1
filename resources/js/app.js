@@ -41,8 +41,8 @@ import {showBtn} from '../assets/js/showFormAndSetValue';
 window.showBtn = showBtn;
 import {hideBtn} from '../assets/js/showFormAndSetValue';
 window.hideBtn = hideBtn;
-import {disableAddTaskBtn} from '../assets/js/showFormAndSetValue';
-window.disableAddTaskBtn = disableAddTaskBtn;
+import {disableBtn} from '../assets/js/showFormAndSetValue';
+window.disableBtn = disableBtn;
 
 // search
 import {searchTask} from '../assets/js/searchTask';

@@ -1,9 +1,9 @@
-// Get the modal
-let modal = document.getElementById('taskDetails');
+// Get the add label modal
+let labelModal = document.getElementById('labelModal');
 // When the user clicks anywhere outside the modal, close it
 window.onclick = function(event) {
-    if (event.target === modal) {
-        modal.style.display = "none";
+    if (event.target === labelModal) {
+        labelModal.style.display = "none";
     }
 }
 // show the send comment form and set the value of parent id
@@ -31,8 +31,8 @@ export function showBtn(buttonId) {
 export function hideBtn(buttonId) {
     document.getElementById(buttonId).style.display='none';
 }
-export function disableAddTaskBtn(nameInput, addTaskBtnId) {
-    let submitBtn = document.getElementById(addTaskBtnId);
+export function disableBtn(nameInput, addBtnId) {
+    let submitBtn = document.getElementById(addBtnId);
     if(nameInput.value === '') {
         submitBtn.setAttribute('disabled', 'true');
         submitBtn.setAttribute('type', 'button');

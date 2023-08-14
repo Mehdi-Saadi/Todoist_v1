@@ -11,7 +11,7 @@ class LabelController extends Controller
     public function create(Request $request)
     {
         $data = $request->validate([
-            'color' => ['required', Rule::in(['text-danger', 'text-warning', 'text-primary', 'text-dark'])],
+            'color' => [Rule::exists('colors', 'code')],
             'name' => ['required'],
         ]);
 
@@ -21,10 +21,9 @@ class LabelController extends Controller
         $data['order'] = $user->labels()->max('order');
         ++$data['order'];
 
-        $user->labels()->create($data);
+        $label = $user->labels()->create($data);
 
-        toast('Label created', 'success');
-        return back();
+        return response()->json($label);
     }
 
     public function update(Request $request, Task $task)
