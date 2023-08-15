@@ -9,13 +9,13 @@
             <div class="mb-1">Label color</div>
             <div class="dropdown no-arrow">
                 <button type="button" class="dropdown-toggle border btn btn-sm shadow-none d-flex justify-content-start w-100"
-                        id="labelDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        id="colorDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <span class="d-inline"><i class="fa-solid fa-circle mr-2" style="color: #808080 !important;"></i>Charcoal</span>
                 </button>
                 <!-- Dropdown - colors -->
-                <div class="dropdown-menu w-100 shadow overflow-auto" aria-labelledby="labelDropDown" style="max-height: 200px;">
+                <div class="dropdown-menu w-100 shadow overflow-auto translate-down" aria-labelledby="colorDropDown" style="max-height: 200px;">
                     @foreach($colors as $color)
-                        <button type="button" class="dropdown-item btn btn-sm" onclick="selectLabel('{{ $color->code }}', '{{ $color->name }}')">
+                        <button type="button" class="dropdown-item btn btn-sm" onclick="selectColor('{{ $color->code }}', '{{ $color->name }}')">
                             <span class="d-inline"><i class="fa-solid fa-circle mr-2" style="color: {{ $color->code }} !important;"></i>{{ $color->name }}</span>
                         </button>
                     @endforeach

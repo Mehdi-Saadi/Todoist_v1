@@ -19,7 +19,7 @@ document.querySelector('#labelForm').addEventListener('submit', function (event)
         toast_alert('', 'Label created');
     });
 
-    selectLabel('#808080', 'Charcoal');
+    selectColor('#808080', 'Charcoal');
     target.querySelector('input[name="name"]').value = '';
     target.querySelector('button[type="submit"]').setAttribute('disabled', 'true');
     target.querySelector('button[type="submit"]').setAttribute('type', 'button');

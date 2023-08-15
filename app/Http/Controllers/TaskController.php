@@ -22,6 +22,7 @@ class TaskController extends Controller
         $data = $request->validate([
             'archive_id' => [Rule::exists('archives', 'id')->where('user_id', $user->id)],
             'color' => [Rule::in(['#db4035', '#fad000', '#4073ff', '#808080'])],
+            'label' => ['max:255'],
             'name' => ['required'],
             'description' => ['max:255'],
         ]);
@@ -41,6 +42,10 @@ class TaskController extends Controller
         ++$data['order'];
 
         $task = $user->tasks()->create($data);
+
+        $user->labels()->firstOrCreate([
+
+        ]);
 
         return response()->json($task);
     }

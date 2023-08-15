@@ -16,10 +16,11 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('name');
-            $table->string('color');
-            $table->foreign('color')->references('color_code')->on('colors')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->string('color')->default('#808080');
+            $table->foreign('color')->references('code')->on('colors')->cascadeOnUpdate()->cascadeOnDelete();
             $table->unsignedBigInteger('order')->default(0);
             $table->boolean('is_favorite')->default(0);
+            $table->unique(['user_id', 'name']);
             $table->timestamps();
         });
     }

@@ -177,7 +177,7 @@
                 {{-- end selected task and its children --}}
             </div>
             <script>
-                submitTask('taskFormSub', 'parent_id-task-detail', 'archive_id-task-detail', 'color-task-detail', 'priorityDropDown-task-detail');
+                submitTask('taskFormSub', 'task-detail');
                 // Get the modal
                 const taskDetailModal = document.querySelector('div.custom-modal.d-block');
                 // When the user clicks anywhere outside the modal or close button, close it

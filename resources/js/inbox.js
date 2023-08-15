@@ -36,13 +36,17 @@ window.sortableItems = sortableItems;
 // sends ajax request for adding new tasks
 import {submitTask} from '../assets/js/addTaskRequest';
 window.submitTask = submitTask;
-submitTask('taskForm', 'parent_id-main', 'archive_id-main', 'color-main', 'priorityDropDown-main');
+submitTask('taskForm', 'main');
 
 import {deleteTask} from "../assets/js/taskDropDown";
 window.deleteTask = deleteTask;
 
 import {showCompletedClicked} from '../assets/js/showAndHideTask';
 window.showCompletedClicked = showCompletedClicked;
-
 import {hideCompletedClicked} from '../assets/js/showAndHideTask';
 window.hideCompletedClicked = hideCompletedClicked;
+
+import {selectLabel} from '../assets/js/selectLabel';
+window.selectLabel = selectLabel;
+import {deleteLabel} from '../assets/js/selectLabel';
+window.deleteLabel = deleteLabel;

@@ -1,4 +1,5 @@
 import {taskResort} from "./taskSort.js";
+import {deleteLabel} from "./selectLabel.js";
 
 function showSavedTask(parentRoot, task) {
     document.querySelector(parentRoot).innerHTML += '<div class="list-group-item rounded-0 border" id="' + task.id + '">' +
@@ -31,17 +32,18 @@ function showSavedTask(parentRoot, task) {
         '</div>';
 }
 
-export function submitTask(taskFormId, parentId, archiveId, colorId, priorityDropDownId) {
+export function submitTask(taskFormId, identity) {
     document.querySelector('#'+taskFormId).addEventListener('submit', function (event) {
         event.preventDefault();
         let target = event.target;
-        if (target.querySelector('#'+archiveId).value === '' || target.querySelector('#'+parentId).value === '' || target.querySelector('#'+colorId).value === '' || target.querySelector('input[name="name"]').value === '') {
+        if (target.querySelector('#archive_id-'+identity).value === '' || target.querySelector('#parent_id-'+identity).value === '' || target.querySelector('#color-'+identity).value === '' || target.querySelector('input[name="name"]').value === '') {
             return
         }
         let data = {
-            archive_id: target.querySelector('#'+archiveId).value,
-            parent_id: target.querySelector('#'+parentId).value,
-            color: target.querySelector('#'+colorId).value,
+            archive_id: target.querySelector('#archive_id-'+identity).value,
+            parent_id: target.querySelector('#parent_id-'+identity).value,
+            color: target.querySelector('#color-'+identity).value,
+            label: target.querySelector('#label-'+identity).value,
             name: target.querySelector('input[name="name"]').value,
             description: target.querySelector('input[name="description"]').value,
         };
@@ -65,8 +67,9 @@ export function submitTask(taskFormId, parentId, archiveId, colorId, priorityDro
             toast_alert('', 'Task created');
         });
 
-        target.querySelector('#'+parentId).value = 0;
-        selectPriority(4, colorId, priorityDropDownId);
+        // target.querySelector('#parent_id-'+identity).value = 0;
+        deleteLabel('label-'+identity, 'labelDropDown-'+identity);
+        selectPriority(4, 'color-'+identity, 'priorityDropDown-'+identity);
         target.querySelector('input[name="name"]').value = '';
         target.querySelector('input[name="description"]').value = '';
         target.querySelector('button[type="submit"]').setAttribute('disabled', 'true');

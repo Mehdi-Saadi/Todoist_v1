@@ -22,8 +22,8 @@ return new class extends Migration
             $table->boolean('is_done')->default(0);
             $table->unsignedBigInteger('archive_id');
             $table->foreign('archive_id')->references('id')->on('archives')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->string('color');
-            $table->foreign('color')->references('color_code')->on('colors')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->string('color')->default('#808080');
+            $table->foreign('color')->references('code')->on('colors')->cascadeOnUpdate()->cascadeOnDelete();
             $table->unsignedBigInteger('order')->default(0);
             $table->dateTime('deadline')->nullable();
             $table->timestamps();

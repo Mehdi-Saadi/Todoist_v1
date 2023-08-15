@@ -1,8 +1,9 @@
 <form class="px-4 py-3 form border bg-white" action="" method="post" style="min-height: 230px;" id="{{ $task_form_id }}">
     @csrf
-    <input type="hidden" name="archive_id" id="archive_id-{{ $identity }}" value="{{ $archive_id }}">
     <input type="hidden" name="parent_id" id="parent_id-{{ $identity }}" value="{{ $id }}">
+    <input type="hidden" name="archive_id" id="archive_id-{{ $identity }}" value="{{ $archive_id }}">
     <input type="hidden" name="color" id="color-{{ $identity }}" value="#808080">
+    <input type="hidden" name="label" id="label-{{ $identity }}" value="">
     <div class="form-group m-0">
         <input onkeyup="disableBtn(this, 'addTaskBtn-{{ $identity }}')" type="text" class="form-control my-2 border-0" style="height: 30px" placeholder="Task name" name="name" autocomplete="off">
         <input type="text" class="form-control mb-2 border-0" style="height: 25px" placeholder="Description" name="description" autocomplete="off">
@@ -35,7 +36,7 @@
             {{-- Dropdown - labels --}}
             <div class="dropdown-menu shadow" aria-labelledby="labelDropDown-{{ $identity }}">
                 @foreach($labels as $label)
-                    <button type="button" class="dropdown-item btn btn-sm" onclick="setColor(1)">
+                    <button type="button" class="dropdown-item btn btn-sm" onclick="selectLabel('{{ $label->color}}', '{{ $label->name }}', 'label-{{ $identity }}', 'labelDropDown-{{ $identity }}')">
                         <i class="fa-solid fa-tag mr-1" style="color: {{ $label->color }} !important;"></i>{{ $label->name }}
                     </button>
                 @endforeach
