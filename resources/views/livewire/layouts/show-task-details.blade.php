@@ -6,7 +6,7 @@
                 {{-- header of modal --}}
                 <div class="border-bottom">
                     <div class="row m-2 d-flex justify-content-between">
-                        <button type="button" class="btn btn-sm" onclick="document.querySelector('div.task-detail-modal.d-block').classList.replace('d-block', 'd-none')">
+                        <button type="button" class="btn btn-sm" onclick="document.querySelector('div.custom-modal.d-block').classList.replace('d-block', 'd-none')">
                             <i class="fa-solid fa-inbox mr-2 text-primary"></i>
                             <span>Inbox</span>
                         </button>
@@ -16,7 +16,7 @@
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="taskMoreTools" title="More actions">
                                     <i class="fa-solid fa-ellipsis"></i>
                                 </button>
-                                <!-- Dropdown - more tools -->
+                                {{-- Dropdown - more tools --}}
                                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="taskMoreTools">
                                     <button type="button" class="dropdown-item btn btn-sm" onclick="pngExport('nestedRoot')">
                                         <i class="fa-regular fa-image mr-2 text-gray-500"></i>
@@ -65,6 +65,13 @@
                                 <div class="row">
                                     <small class="ml-5 pl-2 text-gray-500">{{ $task->description }}</small>
                                 </div>
+                                @if(! is_null($task->label))
+                                    <div class="row">
+                                        <small class="ml-5 pl-3 text-gray-500" style="color: {{ auth()->user()->labels->where('name', $task->label)->pluck('color')->first() }} !important;">
+                                            <i class="fa-solid fa-tag mr-1"></i>{{ $task->label }}
+                                        </small>
+                                    </div>
+                                @endif
                             </div>
                             <div class="list-group nested-sortable mt-2" style="min-height: 20px">
                                 {{-- children tasks --}}
@@ -95,6 +102,13 @@
                                             <div class="row">
                                                 <small class="ml-5 pl-2 text-gray-500">{{ $child->description }}</small>
                                             </div>
+                                            @if(! is_null($child->label))
+                                                <div class="row">
+                                                    <small class="ml-5 pl-3 text-gray-500" style="color: {{ auth()->user()->labels->where('name', $child->label)->pluck('color')->first() }} !important;">
+                                                        <i class="fa-solid fa-tag mr-1"></i>{{ $child->label }}
+                                                    </small>
+                                                </div>
+                                            @endif
                                         </div>
                                     </div>
                                 @endforeach
@@ -108,13 +122,33 @@
                         </div>
                         {{-- sub task form --}}
                         {{-- identity variable is for helping to detect the ids in 'addTaskRequest.js' file --}}
-                        @include('layouts.task-form', ['task_form_id' => 'taskFormSub', 'add_btn_id' => 'subBtn', 'id' => $task->id, 'identity' => 'task-detail', 'archive_id' => $archive_id])
+                        @include('layouts.task-form', ['task_form_id' => 'taskFormSub', 'add_btn_id' => 'subBtn', 'id' => $task->id, 'identity' => 'task-detail', 'inbox' => $inbox])
                     </div>
                     <div class="col-md-3 bg-light rounded-right overflow-y-auto">
                         <div class="m-3">
                             <div>
-                                <div>Archive</div>
-                                <div>inbox</div>
+                                <div class="small">Archive</div>
+                                <div class="dropdown no-arrow d-inline">
+                                    <button type="button" class="dropdown-toggle btn btn-sm shadow-none btn-block text-left pl-0"
+                                            id="archiveDropDownDetail" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        @if($task->archive->name === 'Inbox')
+                                            <i class="fa-solid fa-inbox mr-2" style='color: {{ $task->archive->color }} !important;'></i>{{ $task->archive->name }}
+                                        @else
+                                            <i class="fa-solid fa-circle fa-2xs mr-2" style='color: {{ $task->archive->color }} !important;'></i>{{ $task->archive->name }}
+                                        @endif
+                                    </button>
+                                    {{-- Dropdown - archive --}}
+                                    <div class="dropdown-menu shadow" aria-labelledby="archiveDropDownDetail">
+                                        <button type="button" class="dropdown-item btn btn-sm" onclick="">
+                                            <i class="fa-solid fa-inbox mr-2" style='color: {{ $inbox->color }} !important;'></i>{{ $inbox->name }}
+                                        </button>
+                                        @foreach(auth()->user()->archives()->where('name', '<>', 'Inbox')->get() as $archive)
+                                            <button type="button" class="dropdown-item btn btn-sm" onclick="">
+                                                <i class="fa-solid fa-circle fa-2xs mr-2" style='color: {{ $archive->color }} !important;'></i>{{ $archive->name }}
+                                            </button>
+                                        @endforeach
+                                    </div>
+                                </div>
                             </div>
                             <hr>
                             <div>
@@ -130,46 +164,67 @@
                             </div>
                             <hr>
                             <div>
-                                <div>Priority</div>
+                                <div class="small">Priority</div>
                                 <div class="dropdown no-arrow d-inline">
                                     <button type="button" class="dropdown-toggle btn btn-sm shadow-none btn-block text-left pl-0"
                                             id="priorityDropDownDetail" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         @switch($task->color)
                                             @case('#db4035')
-                                                <i class="fa-solid fa-flag mr-1" style='color: #db4035 !important;'></i>P1
+                                                <i class="fa-solid fa-flag mr-2" style='color: #db4035 !important;'></i>P1
                                                 @break
                                             @case('#fad000')
-                                                <i class="fa-solid fa-flag mr-1" style='color: #fad000 !important;'></i>P2
+                                                <i class="fa-solid fa-flag mr-2" style='color: #fad000 !important;'></i>P2
                                                 @break
                                             @case('#4073ff')
-                                                <i class="fa-solid fa-flag mr-1" style='color: #4073ff !important;'></i>P3
+                                                <i class="fa-solid fa-flag mr-2" style='color: #4073ff !important;'></i>P3
                                                 @break
                                             @case('#808080')
-                                                <i class="fa-solid fa-flag mr-1" style='color: #808080 !important;'></i>P4
+                                                <i class="fa-solid fa-flag mr-2" style='color: #808080 !important;'></i>P4
                                                 @break
                                         @endswitch
                                     </button>
-                                    <!-- Dropdown - User Information -->
+                                    {{-- Dropdown - priority --}}
                                     <div class="dropdown-menu shadow" aria-labelledby="priorityDropDownDetail">
                                         <button type="button" class="dropdown-item btn btn-sm" onclick="selectPriorityTaskDetails(1, {{ $task->id }})">
-                                            <i class="fa-solid fa-flag mr-1" style='color: #db4035 !important;'></i>Priority 1
+                                            <i class="fa-solid fa-flag mr-2" style='color: #db4035 !important;'></i>Priority 1
                                         </button>
                                         <button type="button" class="dropdown-item btn btn-sm" onclick="selectPriorityTaskDetails(2, {{ $task->id }})">
-                                            <i class="fa-solid fa-flag mr-1" style='color: #fad000 !important;'></i>Priority 2
+                                            <i class="fa-solid fa-flag mr-2" style='color: #fad000 !important;'></i>Priority 2
                                         </button>
                                         <button type="button" class="dropdown-item btn btn-sm" onclick="selectPriorityTaskDetails(3, {{ $task->id }})">
-                                            <i class="fa-solid fa-flag mr-1" style='color: #4073ff !important;'></i>Priority 3
+                                            <i class="fa-solid fa-flag mr-2" style='color: #4073ff !important;'></i>Priority 3
                                         </button>
                                         <button type="button" class="dropdown-item btn btn-sm" onclick="selectPriorityTaskDetails(4, {{ $task->id }})">
-                                            <i class="fa-regular fa-flag mr-1" style='color: #808080 !important;'></i>Priority 4
+                                            <i class="fa-regular fa-flag mr-2" style='color: #808080 !important;'></i>Priority 4
                                         </button>
                                     </div>
                                 </div>
                             </div>
                             <hr>
                             <div>
-                                <div>Labels</div>
-                                <div>inbox</div>
+                                @if(is_null($task->label))
+                                    <button type="button" class="btn btn-sm btn-block shadow-none text-left px-0 d-flex justify-content-between">
+                                        <span>Label</span>
+                                        <span><i class="fa-solid fa-plus"></i></span>
+                                    </button>
+                                @else
+                                    <div class="small">Label</div>
+                                    <div class="dropdown no-arrow d-inline">
+                                        <button type="button" class="dropdown-toggle btn btn-sm border border-right-0"
+                                                id="labelDropDownDetail" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fa-solid fa-tag mr-2" style="color: {{ auth()->user()->labels->where('name', $task->label)->pluck('color')->first() }} !important;"></i>{{ $task->label }}
+                                        </button>
+                                        <button class="btn btn-sm border border-left-0" id="deleteLabelBtnDetail" onclick="deleteLabel()"><i class="fa-solid fa-close"></i></button>
+                                        {{-- Dropdown - labels --}}
+                                        <div class="dropdown-menu shadow" aria-labelledby="labelDropDownDetail">
+                                            @foreach($labels as $label)
+                                                <button type="button" class="dropdown-item btn btn-sm" onclick="">
+                                                    <i class="fa-solid fa-tag mr-2" style="color: {{ $label->color }} !important;"></i>{{ $label->name }}
+                                                </button>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>

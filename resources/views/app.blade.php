@@ -119,7 +119,7 @@
         @livewire('layouts.tasks')
     </div>
     {{-- show task details --}}
-    @livewire('layouts.show-task-details', ['archive_id' => $archive_id, 'labels' => $labels])
+    @livewire('layouts.show-task-details', ['inbox' => $inbox, 'labels' => $labels])
     {{-- new task button --}}
     <div class="justify-content-center mt-2" style="margin-bottom: 8rem;" id="addBtn">
         <button class="w-100 d-flex justify-content-start border-0 px-2 btn on-hover-red" onclick="showForm('taskForm');hideBtn('addBtn')"><i class="fa-solid fa-plus mr-2 rounded-circle p-1"></i>Add task</button>

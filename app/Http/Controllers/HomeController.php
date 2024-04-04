@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Archive;
 use App\Models\Color;
 
 class HomeController extends Controller
@@ -26,8 +27,17 @@ class HomeController extends Controller
         $user = auth()->user();
         $labels = $user->labels->sortBy('order');
         // get the first user's archive (inbox)
-        $archive_id = $user->archives()->pluck('id')->first();
-        return view('app', compact(['archive_id', 'labels']));
+        $inbox = $user->archives()->first();
+        return view('app', compact(['inbox', 'labels']));
+    }
+
+    public function archive(Archive $archive)
+    {
+        $user = auth()->user();
+        $labels = $user->labels->sortBy('order');
+        // get the first user's archive (inbox)
+        $inbox = $user->archives()->first();
+        return view('app', compact(['inbox', 'labels']));
     }
 
     public function labels()

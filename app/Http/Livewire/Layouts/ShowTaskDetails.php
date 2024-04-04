@@ -9,7 +9,7 @@ class ShowTaskDetails extends Component
 {
     public $task;
     public bool $showTaskDetail = false;
-    public $archive_id;
+    public $inbox;
     public $labels;
     public $listeners = [
         'showDetail'

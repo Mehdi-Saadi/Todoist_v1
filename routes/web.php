@@ -21,6 +21,7 @@ Auth::routes(['verify' => true]);
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/app', [HomeController::class, 'app'])->name('app');
+Route::get('/app/{archive}', [HomeController::class, 'archive'])->name('archive');
 Route::get('/labels', [HomeController::class, 'labels'])->name('labels');
 
 // task routes

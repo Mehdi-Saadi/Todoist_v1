@@ -29,6 +29,11 @@ class Task extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function archive(): BelongsTo
+    {
+        return $this->belongsTo(Archive::class);
+    }
+
     public function child(): HasMany
     {
         return $this->hasMany(Task::class, 'parent_id', 'id');

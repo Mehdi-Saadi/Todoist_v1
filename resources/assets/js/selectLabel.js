@@ -24,3 +24,12 @@ export function deleteLabel(labelFieldId, labelDropDownId) {
     labelDropDownBtn.innerHTML = '<i class="fa-solid fa-tags mr-1"></i>Labels';
     if(closeBtn) {closeBtn.remove();}
 }
+export function deleteLabelDetail(labelFieldId, labelDropDownId) {
+    const labelField = document.getElementById(labelFieldId);
+    const labelDropDownBtn = document.getElementById(labelDropDownId);
+    const closeBtn = document.getElementById('deleteLabelBtn');
+    labelDropDownBtn.classList.remove('border-right-0');
+    labelField.value = '';
+    labelDropDownBtn.innerHTML = '<i class="fa-solid fa-tags mr-1"></i>Labels';
+    if(closeBtn) {closeBtn.remove();}
+}

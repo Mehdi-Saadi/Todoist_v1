@@ -15,11 +15,18 @@
                     <i class="fa-solid fa-table-cells-large mr-2 text-warning"></i>
                     <span>Labels</span>
                 </a>
+                <div class="dropdown-divider"></div>
+                <div class="dropdown-item-text text-gray-600 small">Archives</div>
+                @foreach(auth()->user()->archives()->where('name', '<>', 'Inbox')->get() as $archive)
+                    <a class="dropdown-item btn btn-sm" href="{{ route('app') }}">
+                        <i class="fa-solid fa-circle fa-2xs mr-2" style="color: {{ $archive->color }} !important;"></i>
+                        <span>{{ $archive->name }}</span>
+                    </a>
+                @endforeach
 {{--                <a class="dropdown-item btn btn-sm" href="{{ route('filter_label') }}">--}}
 {{--                    <i class="fa-solid fa-table-cells-large mr-2 text-warning"></i>--}}
 {{--                    <span>Filters & Labels</span>--}}
 {{--                </a>--}}
-{{--                <div class="dropdown-divider"></div>--}}
 {{--                <div class="dropdown-item-text text-gray-600 small">--}}
 {{--                    Projects--}}
 {{--                </div>--}}

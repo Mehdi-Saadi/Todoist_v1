@@ -13,25 +13,26 @@
                         <li>
                             <button type="button" class="btn btn-sm ml-2" wire:click="$emitTo('layouts.show-task-details', 'showDetail', {{ $task->id }})">{{ $task->name }}</button>
                         </li>
-                        {{--                        <li class="dropdown no-arrow">--}}
-                        {{--                            <button type="button" class="dropdown-toggle btn btn-sm pt-0 ml-2" id="task-{{ $task->id }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ $task->name }}</button>--}}
-                        {{--                            --}}{{-- Dropdown - task details --}}
-                        {{--                            <div class="dropdown-menu dropdown-menu shadow animated--grow-in" aria-labelledby="task-{{ $task->id }}">--}}
-                        {{--                                <button type="button" class="dropdown-item btn btn-sm" onclick="deleteTask({{ $task->id }}, '{{ $task->name }}')">--}}
-                        {{--                                    <i class="fa-regular fa-trash-can mr-2 text-danger"></i>--}}
-                        {{--                                    Delete task--}}
-                        {{--                                </button>--}}
-                        {{--                            </div>--}}
-                        {{--                        </li>--}}
                     </ul>
                     {{-- tools --}}
                     <ul class="navbar-nav ml-auto">
-                        <li></li>
+                        <li>
+                            <button type="button" class="btn btn-sm" onclick="deleteTask({{ $task->id }}, '{{ $task->name }}')">
+                                <i class="fa-regular fa-trash-can text-danger"></i>
+                            </button>
+                        </li>
                     </ul>
                 </div>
                 <div class="row">
                     <small class="ml-5 pl-3 text-gray-500">{{ $task->description }}</small>
                 </div>
+                @if(! is_null($task->label))
+                    <div class="row">
+                        <small class="ml-5 pl-3 text-gray-500" style="color: {{ auth()->user()->labels->where('name', $task->label)->pluck('color')->first() }} !important;">
+                            <i class="fa-solid fa-tag mr-1"></i>{{ $task->label }}
+                        </small>
+                    </div>
+                @endif
             </div>
             <div class="list-group nested-sortable mt-2" style="min-height: 20px">
                 @include('layouts.tasks', ['tasks' => $task->child->where('is_done', 0)->sortBy('order')])
